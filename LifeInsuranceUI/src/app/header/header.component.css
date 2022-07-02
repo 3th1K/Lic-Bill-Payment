@@ -1,0 +1,21 @@
+.navbar {
+    margin-bottom: 10px;
+    background-color:lightcyan;
+    border: 3px solid aqua;
+    border-top-width: 0px;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+.navbar-brand{
+    color:skyblue;
+    font-size:35px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-shadow: 0 0 2px #FF0000, 0 0 4px #0000FF;
+}
+.navbar-brand:hover{
+    color: turquoise;
+    text-shadow: 0 0 2px #ff006a, 0 0 4px #0000ad8f;
+}
+.nav-item{
+    font-size: large;
+}

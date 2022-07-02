@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+.lic-content{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    background-color: rgb(212, 179, 243);
+    border: 2px solid rgb(243, 81, 6);
+    border-radius: 50px;
+}
+
+.invalid-data{
+    border: 2px solid red;
+}
+
+.valid-data{
+    border: 2px solid green;
+}

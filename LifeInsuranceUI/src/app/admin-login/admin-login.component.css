@@ -1,0 +1,11 @@
+.card{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-align: center;
+    border: 2px solid yellow;
+    border-radius: 50px;
+}
+section.lic-content{
+    background-color: rgb(221, 60, 60);
+    border: 2px solid yellow;
+}

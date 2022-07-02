@@ -1,0 +1,8 @@
+footer{
+    margin-top: 10px;
+    background-color:lightcyan;
+    border: 3px solid aqua;
+    border-bottom-width: 0px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
