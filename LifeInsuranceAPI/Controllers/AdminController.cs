@@ -19,7 +19,6 @@ namespace LifeInsuranceAPI.Controllers
             {
                 request.Role = "admin";
                 var token = JwtHelper.CreateJwtToken(request);
-                //return Ok("ok");
                 return Ok(new { success = true, message = "Succesfully logged in", token = token });
             }
             return Unauthorized();
@@ -31,12 +30,12 @@ namespace LifeInsuranceAPI.Controllers
             return Ok(new { email = "admin@gmail.com", password = "admin123"});
         }
 
-        [HttpGet]
+        /*[HttpGet]
         [Route("api/admin/superadmin-home")]
         [Authorize(Roles = "superadmin")]
         public IHttpActionResult SuperadminHome()
         {
             return Ok("Super Admin Home");
-        }
+        }*/
     }
 }

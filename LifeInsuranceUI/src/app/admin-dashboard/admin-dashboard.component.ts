@@ -17,6 +17,7 @@ export class AdminDashboardComponent implements OnInit {
       next : (res:any) => console.log(res),
       error: (err:HttpErrorResponse) => {
         console.log(err);
+        alert("You are not Authorized !");
         this._router.navigate(['admin-login']);
       }
     })
