@@ -4,10 +4,9 @@
             <span class="sr-only" id="loading"></span>
         </div>
     </div>
-    <h1 *ngIf="dataLoaded && contacts.length" class="display-1">Users</h1>
-    <div class="jumbotron" *ngIf="dataLoaded && !contacts.length">
+    <h1 *ngIf="dataLoaded && users.length" class="display-1">Users</h1>
+    <div class="jumbotron" *ngIf="dataLoaded && !users.length">
         <h1  class="display-4">No Users</h1>
-        <button class="btn btn-primary" [routerLink]="['../edit-user']">New User</button>
     </div>
     <hr>
     <table *ngIf="dataLoaded && users.length" class="table table-hover table-borderless">
@@ -15,7 +14,7 @@
           <tr>
             <th scope="col">Name</th>
             <th scope="col">Phone Number</th>
-            <th scope="col">State</th>
+            <th scope="col">Email</th>
             <th scope="col">Gender</th>
             <th scope="col">Edit</th>
             <th scope="col">Delete</th>
@@ -23,14 +22,10 @@
         </thead>
         <tbody>
             <tr *ngFor="let user of users" >
-                <td style="cursor: pointer" [routerLink]="['../get-user']" [queryParams]="{id:user.Id}">{{user.Name}}</td>
-                <td>{{user.Number}}</td>
-                <td>
-                    <i *ngIf="user.Fevourite" class="fa fa-heart fav"></i>
-                    <i *ngIf="!user.Fevourite" class="fa fa-heart notfav"></i>
-                </td>
-                <td *ngIf="user.Group!=null">{{user.Group.Name}}</td>
-                <td *ngIf="user.Group==null">Not Grouped</td>
+                <td style="cursor: pointer" [routerLink]="['../get-user']" [queryParams]="{id:user.Id}">{{user.FirstName+" "+user.LastName}}</td>
+                <td>{{user.PhoneNumber}}</td>
+                <td>{{user.Email}}</td>
+                <td>will add later</td>
                 <td> 
                     <button class="btn btn-primary" [routerLink]="['../edit-user']" [queryParams]="{id:user.Id}">
                     <i class="bi bi-pencil"></i>

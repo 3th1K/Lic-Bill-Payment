@@ -15,6 +15,7 @@ import { FooterComponent } from './footer/footer.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthenticationService } from './services/authentication.service';
+import { SharedService } from './services/shared.service';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { GetUsersComponent } from './get-users/get-users.component';
@@ -43,7 +44,7 @@ import { EditUserComponent } from './edit-user/edit-user.component';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [AuthenticationService, AuthGuard, {
+  providers: [AuthenticationService, SharedService, AuthGuard, {
     provide: HTTP_INTERCEPTORS,
     useClass : TokenInterceptorService,
     multi : true
