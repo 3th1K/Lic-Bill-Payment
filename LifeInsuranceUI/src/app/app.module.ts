@@ -17,6 +17,9 @@ import { AuthGuard } from './guards/auth.guard';
 import { AuthenticationService } from './services/authentication.service';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { GetUsersComponent } from './get-users/get-users.component';
+import { GetUserComponent } from './get-user/get-user.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     UserLoginComponent,
     FooterComponent,
     AdminLoginComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    GetUsersComponent,
+    GetUserComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,

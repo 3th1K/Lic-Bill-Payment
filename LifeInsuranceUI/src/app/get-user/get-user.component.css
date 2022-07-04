@@ -1,0 +1,27 @@
+div{
+    text-align: center;
+}
+.color-red{
+    color: red;
+}
+.color-grey{
+    color: lightgray;
+}
+.add-button {
+    background-color: lightblue;
+    border: 20;
+    border-color: blue;
+    color: white;
+    padding: 10px 13px;
+    font-size: 6px;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+  .blue-color{
+      color: blue;
+  }
+  
+  /* Darker background on mouse-over */
+  .add-button:hover {
+    background-color:aquamarine;
+  }
