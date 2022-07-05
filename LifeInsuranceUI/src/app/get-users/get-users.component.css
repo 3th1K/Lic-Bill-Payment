@@ -1,0 +1,9 @@
+div{
+    text-align: center;
+}
+.fav{
+    color: red;
+}
+.notfav{
+    color: lightgray;
+}

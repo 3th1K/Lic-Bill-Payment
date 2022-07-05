@@ -15,11 +15,18 @@ import { FooterComponent } from './footer/footer.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthenticationService } from './services/authentication.service';
+import { SharedService } from './services/shared.service';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+<<<<<<< HEAD
 import { GetEmployeeComponent } from './get-employee/get-employee.component';
 import { GetEmployeesComponent } from './get-employees/get-employees.component';
 import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
+=======
+import { GetUsersComponent } from './get-users/get-users.component';
+import { GetUserComponent } from './get-user/get-user.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
+>>>>>>> 2f348934920af70026f7bda595e5de714e5852ce
 
 @NgModule({
   declarations: [
@@ -33,9 +40,15 @@ import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
     FooterComponent,
     AdminLoginComponent,
     AdminDashboardComponent,
+<<<<<<< HEAD
     GetEmployeeComponent,
     GetEmployeesComponent,
     EditEmployeeComponent
+=======
+    GetUsersComponent,
+    GetUserComponent,
+    EditUserComponent
+>>>>>>> 2f348934920af70026f7bda595e5de714e5852ce
   ],
   imports: [
     BrowserModule,
@@ -43,7 +56,7 @@ import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [AuthenticationService, AuthGuard, {
+  providers: [AuthenticationService, SharedService, AuthGuard, {
     provide: HTTP_INTERCEPTORS,
     useClass : TokenInterceptorService,
     multi : true
