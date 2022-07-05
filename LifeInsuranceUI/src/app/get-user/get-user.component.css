@@ -1,27 +1,36 @@
 div{
     text-align: center;
 }
-.color-red{
-    color: red;
+body {
+    background: rgb(99, 39, 120)
 }
-.color-grey{
-    color: lightgray;
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #BA68C8
 }
-.add-button {
-    background-color: lightblue;
-    border: 20;
-    border-color: blue;
-    color: white;
-    padding: 10px 13px;
-    font-size: 6px;
-    cursor: pointer;
-    border-radius: 50%;
-  }
-  .blue-color{
-      color: blue;
-  }
-  
-  /* Darker background on mouse-over */
-  .add-button:hover {
-    background-color:aquamarine;
-  }
+
+.profile-button {
+    background: rgb(99, 39, 120);
+    box-shadow: none;
+    border: none
+}
+
+.profile-button:hover {
+    background: #682773
+}
+
+.profile-button:focus {
+    background: #682773;
+    box-shadow: none
+}
+
+.profile-button:active {
+    background: #682773;
+    box-shadow: none
+}
+
+.labels {
+    font-size: 11px
+}
+
