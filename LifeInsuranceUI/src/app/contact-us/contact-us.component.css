@@ -15,8 +15,10 @@
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	background: url(life.jpg);
+	background-image: url('life.jpg');
 	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
 }
 .contact .content
 {
@@ -27,13 +29,13 @@
 {
 	font-size: 36px;
 	font-weight: 500;
-	color: #fff;
+	color: #000000;
 }
 .contact .content p
 {
 
 	font-weight: 300;
-	color: #fff;
+	color: #0000ff;
 }
 .container
 {
@@ -45,7 +47,7 @@
 }
 .container .contactInfo
 {
-	width: 50%;
+	width: 500%;
 	display: flex;
 	flex-direction: column;
 }
@@ -72,7 +74,7 @@
 	display: flex;
 	margin-left: 20px;
 	font-size: 16px;
-	color: #fff;
+	color: 	#000000;
 	flex-direction: column;
 	font-weight: 300;
 
@@ -82,16 +84,10 @@
 	font-weight: 500;
 	color: #00bcd4;
 }
-.contactForm 
-{
-	width: 40%;
-	padding: 40px;
-	background: #fff;
-}
 .contactForm h2
 {
 	font-size: :30px;
-	color: #333;
+	color: 	#0000ff;
 	font-weight: 500;
 }
 .contactForm .inputBox
