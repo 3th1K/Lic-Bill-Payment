@@ -12,9 +12,6 @@ namespace LifeInsuranceAPI.Models
         [Display(Name = "Date Of Birth")]
         public DateTime DateOfBirth { get; set; }
 
-        [Required, MaxLength(10)]
-        public string Gender { get; set; }
-
         [Required]
         [Display(Name = "Martial Status")]
         public bool MartialStatus { get; set; }

@@ -19,6 +19,9 @@ namespace LifeInsuranceAPI.Models
         [Display(Name = "Email Address")]
         public string Email { get; set; }
 
+        [Required, MaxLength(10)]
+        public string Gender { get; set; }
+
         [Required, DataType(DataType.PhoneNumber)]
         [Display(Name = "Phone Number")]
         public long PhoneNumber { get; set; }
