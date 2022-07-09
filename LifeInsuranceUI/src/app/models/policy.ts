@@ -1,3 +1,4 @@
+import { PolicyType } from "./policy-type";
 export interface Policy {
     Id: number;
     Name: string;

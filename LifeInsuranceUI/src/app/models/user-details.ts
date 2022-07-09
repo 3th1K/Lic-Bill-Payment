@@ -1,3 +1,5 @@
+import { Address } from "./address";
+import { Policy } from "./policy";
 export interface UserDetails {
     Id: number;
     DateOfBirth: string;

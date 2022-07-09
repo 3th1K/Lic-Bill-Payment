@@ -1,3 +1,4 @@
+import { UserDetails } from "./user-details";
 export interface User {
     Id: number;
     FirstName: string;
