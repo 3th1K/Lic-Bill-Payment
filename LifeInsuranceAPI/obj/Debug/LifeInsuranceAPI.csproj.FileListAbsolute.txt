@@ -99,3 +99,4 @@ E:\Cognizant\LIC - Angular\LifeInsuranceAPI\bin\Microsoft.IdentityModel.Tokens.x
 E:\Cognizant\LIC - Angular\LifeInsuranceAPI\bin\System.IdentityModel.Tokens.Jwt.xml
 E:\Cognizant\LIC - Angular\LifeInsuranceAPI\obj\Debug\LifeInsuranceAPI.Migrations.CreateUserSideTables.resources
 E:\Cognizant\LIC - Angular\LifeInsuranceAPI\obj\Debug\LifeInsuranceAPI.csproj.GenerateResource.cache
+E:\Cognizant\LIC - Angular\LifeInsuranceAPI\obj\Debug\LifeInsuranceAPI.Migrations.AddEmployeeTable.resources

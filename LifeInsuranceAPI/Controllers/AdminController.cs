@@ -50,6 +50,84 @@ namespace LifeInsuranceAPI.Controllers
             return Ok(users);
         }
 
+        [HttpGet]
+        [Route("api/admin/get-user/{id}")]
+        public async Task<IHttpActionResult> GetUser(int id)
+        {
+            var user = await _context.Users
+                                        .Include(u => u.UserDetails)
+                                        .Include(u => u.UserDetails.Address)
+                                        .Include(u => u.UserDetails.Policy)
+                                        .Include(u => u.UserDetails.Policy.PolicyType)
+                                        .SingleOrDefaultAsync(u => u.Id == id);
+            if (user == null)
+                return NotFound();
+            return Ok(user);
+        }
+
+        [HttpGet]
+        [Route("api/admin/get-employees")]
+        public async Task<IHttpActionResult> GetEmployees()
+        {
+            var employees = await _context.Employees
+                                        .Include(e => e.Address)
+                                        .ToListAsync();
+            return Ok(employees) ;
+        }
+
+        [HttpGet]
+        [Route("api/admin/get-employee/{id}")]
+        public async Task<IHttpActionResult> GetEmployee(int id)
+        {
+            var employee = await _context.Employees
+                                        .Include(e => e.Address)
+                                        .SingleOrDefaultAsync(e => e.Id == id);
+            if (employee == null)
+                return NotFound();
+            return Ok(employee);
+        }
+
+        [HttpGet]
+        [Route("api/admin/get-policies")]
+        public async Task<IHttpActionResult> GetPolicies()
+        {
+            var policies = await _context.Policies
+                                        .Include(p => p.PolicyType)
+                                        .ToListAsync();
+            return Ok(policies);
+        }
+
+        [HttpGet]
+        [Route("api/admin/get-policy/{id}")]
+        public async Task<IHttpActionResult> GetPolicy(int id)
+        {
+            var policy = await _context.Policies
+                                        .Include(p => p.PolicyType)
+                                        .SingleOrDefaultAsync(p => p.Id == id);
+            if (policy == null)
+                return NotFound();
+            return Ok(policy);
+        }
+
+        [HttpGet]
+        [Route("api/admin/get-policy-types")]
+        public async Task<IHttpActionResult> GetPolicyTypes()
+        {
+            var policyTypes = await _context.PolicyTypes.ToListAsync();
+            return Ok(policyTypes);
+        }
+
+        [HttpGet]
+        [Route("api/admin/get-policy-type/{id}")]
+        public async Task<IHttpActionResult> GetPolicyType(int id)
+        {
+            var policyType = await _context.PolicyTypes.SingleOrDefaultAsync(p => p.Id == id);
+            if (policyType == null)
+                return NotFound();
+            return Ok(policyType);
+        }
+
+
         /*[HttpGet]
         [Route("api/admin/superadmin-home")]
         [Authorize(Roles = "superadmin")]

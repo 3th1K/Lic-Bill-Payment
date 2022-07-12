@@ -28,7 +28,7 @@ namespace LifeInsuranceAPI.Models
 
         [Required]
         [Display(Name = "Pan Number")]
-        public int PanNumber { get; set; }
+        public string PanNumber { get; set; }
         public Address Address { get; set; }
         public Policy Policy { get; set; }
         public int AddressId { get; set; }

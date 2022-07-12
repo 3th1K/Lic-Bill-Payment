@@ -187,9 +187,14 @@
     <Compile Include="Migrations\202207090620237_CreateUserSideTables.designer.cs">
       <DependentUpon>202207090620237_CreateUserSideTables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202207121805318_AddEmployeeTable.cs" />
+    <Compile Include="Migrations\202207121805318_AddEmployeeTable.designer.cs">
+      <DependentUpon>202207121805318_AddEmployeeTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\JwtHelper.cs" />
     <Compile Include="Models\LoginRequest.cs" />
     <Compile Include="Models\Policy.cs" />
@@ -284,6 +289,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202207090620237_CreateUserSideTables.resx">
       <DependentUpon>202207090620237_CreateUserSideTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207121805318_AddEmployeeTable.resx">
+      <DependentUpon>202207121805318_AddEmployeeTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
