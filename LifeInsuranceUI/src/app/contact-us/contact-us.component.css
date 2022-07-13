@@ -9,15 +9,22 @@
 body{
   min-height: 100vh;
   width: 100%;
-  background: #c8e8e9;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  background-color: rgb(212, 179, 243);
+  border: 2px solid rgb(243, 81, 6);
+  border-radius: 50px;
+  
 }
 .container{
-  width: 85%;
+  text-align: center;
+  width: 100%;
   background: #fff;
-  border-radius: 6px;
+  border-radius: 50px;
   padding: 20px 60px 30px 40px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }

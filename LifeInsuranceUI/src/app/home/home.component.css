@@ -57,17 +57,12 @@ nav .menu{
   background: url('https://media.istockphoto.com/photos/insurance-protecting-family-health-live-house-and-car-concept-picture-id1202095009?k=20&m=1202095009&s=612x612&w=0&h=_L2uP2jj3tzX5LW66m9IkDxu8zwOj2Jp17ZHIQ8fiRk=')no-repeat;
   width: 100%;
   height: 100vh;
+  border-radius: 50px;
   background-size: cover;
   background-position: center;
   position: relative;
 }
-.img::before{
-  content: '';
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.4);
-}
+
 .center{
   position: absolute;
   top: 52%;
