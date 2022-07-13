@@ -65,6 +65,17 @@ namespace LifeInsuranceAPI.Controllers
             return Ok(user);
         }
 
+        [HttpDelete]
+        [Route("api/admin/delete-user/{id}")]
+        public async Task<IHttpActionResult> DeleteUser(int id) { 
+            User userInDb = await _context.Users.SingleOrDefaultAsync(u => u.Id == id);
+            if (userInDb == null)
+                return NotFound();
+            _context.Users.Remove(userInDb);
+            _context.SaveChanges();
+            return Ok("Deleted");
+        }
+
         [HttpGet]
         [Route("api/admin/get-employees")]
         public async Task<IHttpActionResult> GetEmployees()
@@ -85,6 +96,18 @@ namespace LifeInsuranceAPI.Controllers
             if (employee == null)
                 return NotFound();
             return Ok(employee);
+        }
+
+        [HttpDelete]
+        [Route("api/admin/delete-employee/{id}")]
+        public async Task<IHttpActionResult> DeleteEmployee(int id)
+        {
+            Employee employeeInDb = await _context.Employees.SingleOrDefaultAsync(e => e.Id == id);
+            if (employeeInDb == null)
+                return NotFound();
+            _context.Employees.Remove(employeeInDb);
+            _context.SaveChanges();
+            return Ok("Deleted");
         }
 
         [HttpGet]
@@ -109,6 +132,18 @@ namespace LifeInsuranceAPI.Controllers
             return Ok(policy);
         }
 
+        [HttpDelete]
+        [Route("api/admin/delete-policy/{id}")]
+        public async Task<IHttpActionResult> DeletePolicy(int id)
+        {
+            Policy policyInDb = await _context.Policies.SingleOrDefaultAsync(p => p.Id == id);
+            if (policyInDb == null)
+                return NotFound();
+            _context.Policies.Remove(policyInDb);
+            _context.SaveChanges();
+            return Ok("Deleted");
+        }
+
         [HttpGet]
         [Route("api/admin/get-policy-types")]
         public async Task<IHttpActionResult> GetPolicyTypes()
@@ -125,6 +160,18 @@ namespace LifeInsuranceAPI.Controllers
             if (policyType == null)
                 return NotFound();
             return Ok(policyType);
+        }
+
+        [HttpDelete]
+        [Route("api/admin/delete-policy-types/{id}")]
+        public async Task<IHttpActionResult> DeletePolicyTypes(int id)
+        {
+            PolicyType policyTypeInDb = await _context.PolicyTypes.SingleOrDefaultAsync(pt => pt.Id == id);
+            if (policyTypeInDb == null)
+                return NotFound();
+            _context.PolicyTypes.Remove(policyTypeInDb);
+            _context.SaveChanges();
+            return Ok("Deleted");
         }
 
 

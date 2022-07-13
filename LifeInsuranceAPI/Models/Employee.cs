@@ -27,9 +27,9 @@ namespace LifeInsuranceAPI.Models
         [Display(Name = "Phone Number")]
         public long PhoneNumber { get; set; }
 
-        [Required, DataType(DataType.DateTime)]
+        [Required]
         [Display(Name = "Date Of Birth")]
-        public DateTime DateOfBirth { get; set; }
+        public string DateOfBirth { get; set; }
 
         [Required]
         [Display(Name = "Martial Status")]
@@ -39,10 +39,12 @@ namespace LifeInsuranceAPI.Models
         [Display(Name = "Aadhar Number")]
         public long AadharNumber { get; set; }
 
+        [Required]
+        public string Address { get;set; }
+
         [Required, DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
-        public Address Address { get; set; }
-        public int AddressId { get; set; }
+        
     }
 }

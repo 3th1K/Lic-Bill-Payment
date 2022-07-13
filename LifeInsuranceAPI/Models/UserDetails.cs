@@ -8,9 +8,9 @@ namespace LifeInsuranceAPI.Models
         [Key]
         public int Id { get; set; }
 
-        [Required, DataType(DataType.DateTime)]
+        [Required]
         [Display(Name = "Date Of Birth")]
-        public DateTime DateOfBirth { get; set; }
+        public string DateOfBirth { get; set; }
 
         [Required]
         [Display(Name = "Martial Status")]

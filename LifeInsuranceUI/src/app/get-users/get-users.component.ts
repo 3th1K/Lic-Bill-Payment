@@ -21,8 +21,7 @@ export class GetUsersComponent implements OnInit {
   }
 
   removeUser(id:number){
-    this._sharedService.deleteUser(id).subscribe(()=>{this.initializeUsers();});
-    
+    this._sharedService.deleteUser(id).subscribe(data =>{this.initializeUsers(); console.log(data)});
   }
   
   initializeUsers(){

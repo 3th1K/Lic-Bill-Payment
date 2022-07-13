@@ -100,3 +100,5 @@ E:\Cognizant\LIC - Angular\LifeInsuranceAPI\bin\System.IdentityModel.Tokens.Jwt.
 E:\Cognizant\LIC - Angular\LifeInsuranceAPI\obj\Debug\LifeInsuranceAPI.Migrations.CreateUserSideTables.resources
 E:\Cognizant\LIC - Angular\LifeInsuranceAPI\obj\Debug\LifeInsuranceAPI.csproj.GenerateResource.cache
 E:\Cognizant\LIC - Angular\LifeInsuranceAPI\obj\Debug\LifeInsuranceAPI.Migrations.AddEmployeeTable.resources
+E:\Cognizant\LIC - Angular\LifeInsuranceAPI\obj\Debug\LifeInsuranceAPI.Migrations.DateTimeToString.resources
+E:\Cognizant\LIC - Angular\LifeInsuranceAPI\obj\Debug\LifeInsuranceAPI.Migrations.address.resources

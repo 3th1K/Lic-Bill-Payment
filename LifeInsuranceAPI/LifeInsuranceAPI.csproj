@@ -191,6 +191,14 @@
     <Compile Include="Migrations\202207121805318_AddEmployeeTable.designer.cs">
       <DependentUpon>202207121805318_AddEmployeeTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202207131301031_DateTimeToString.cs" />
+    <Compile Include="Migrations\202207131301031_DateTimeToString.designer.cs">
+      <DependentUpon>202207131301031_DateTimeToString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202207131737398_address.cs" />
+    <Compile Include="Migrations\202207131737398_address.designer.cs">
+      <DependentUpon>202207131737398_address.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -292,6 +300,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202207121805318_AddEmployeeTable.resx">
       <DependentUpon>202207121805318_AddEmployeeTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207131301031_DateTimeToString.resx">
+      <DependentUpon>202207131301031_DateTimeToString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207131737398_address.resx">
+      <DependentUpon>202207131737398_address.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
