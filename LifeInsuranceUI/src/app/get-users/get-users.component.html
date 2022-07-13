@@ -1,10 +1,5 @@
 
 <div>
-    <div class="jumbotron">
-        <div class="spinner-border m-5" role="status" *ngIf="!dataLoaded">
-            <span class="sr-only" id="loading"></span>
-        </div>
-    </div>
     <h1 *ngIf="dataLoaded && users.length" class="display-1">Users</h1>
     <div class="jumbotron" *ngIf="dataLoaded && !users.length">
         <h1  class="display-4">No Users</h1>
