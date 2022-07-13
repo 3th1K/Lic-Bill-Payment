@@ -1,6 +1,6 @@
 import { Address } from "./address";
 import { Policy } from "./policy";
-export interface UserDetails {
+export class UserDetails {
     Id: number;
     DateOfBirth: string;
     MartialStatus: boolean;

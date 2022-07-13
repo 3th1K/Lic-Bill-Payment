@@ -15,6 +15,9 @@ export class SharedService {
   getUsers():Observable<any>{
     return this._http.get(this.url+'/admin/get-users');
   }
+  getUser(id: number):Observable<any>{
+    return this._http.get(this.url+'/admin/get-user/'+id);
+  }
 
   deleteUser(id:number):Observable<any>{
     return this._http.delete(this.url+'/admin/delete-user/'+id);

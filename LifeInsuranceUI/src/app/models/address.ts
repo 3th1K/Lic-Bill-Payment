@@ -1,4 +1,4 @@
-export interface Address {
+export class Address {
     Id: number;
     StreetAddressLine1: string;
     StreetAddressLine2: string;

@@ -1,5 +1,5 @@
 import { PolicyType } from "./policy-type";
-export interface Policy {
+export class Policy {
     Id: number;
     Name: string;
     Description: string;
