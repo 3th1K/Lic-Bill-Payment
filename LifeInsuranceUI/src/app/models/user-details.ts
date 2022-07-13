@@ -7,7 +7,7 @@ export interface UserDetails {
     Occupation: string;
     Salary: number;
     AadharNumber: number;
-    PanNumber: number;
+    PanNumber: string;
     Address: Address;
     Policy: Policy;
     AddressId: number;
