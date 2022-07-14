@@ -16,8 +16,9 @@ namespace LifeInsuranceAPI.Models
 
             var claims = new List<Claim>();
             claims.Add(new Claim(ClaimTypes.Name, request.EmailAddress));
-            claims.Add(new Claim(ClaimTypes.NameIdentifier, request.EmailAddress));
+            claims.Add(new Claim(ClaimTypes.NameIdentifier, request.Id.ToString()));
             claims.Add(new Claim(ClaimTypes.Role, request.Role));
+
 
             var id = new ClaimsIdentity(claims);
 

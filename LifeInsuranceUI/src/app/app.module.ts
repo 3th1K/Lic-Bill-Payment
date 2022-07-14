@@ -31,6 +31,11 @@ import { GetPoliciesComponent } from './get-policies/get-policies.component';
 import { GetPolicyComponent } from './get-policy/get-policy.component';
 import { EditPolicyComponent } from './edit-policy/edit-policy.component';
 
+import { JwtModule } from '@auth0/angular-jwt';
+
+export function tokenGetter(){
+  return localStorage.getItem("token");
+}
 
 @NgModule({
   declarations: [
@@ -60,7 +65,14 @@ import { EditPolicyComponent } from './edit-policy/edit-policy.component';
     AppRoutingModule,
     RouterModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    JwtModule.forRoot({
+      config:{
+        tokenGetter: tokenGetter,
+        allowedDomains: ["localhost:4200"],
+        disallowedRoutes: []
+      }
+    })
   ],
   providers: [AuthenticationService, SharedService, AuthGuard, {
     provide: HTTP_INTERCEPTORS,
