@@ -5,3 +5,10 @@
     border: 2px solid rgb(243, 81, 6);
     border-radius: 50px;
 }
+.invalid-data{
+    border: 2px solid red;
+}
+
+.valid-data{
+    border: 2px solid green;
+}

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Data.Entity;
-using System.ComponentModel.DataAnnotations;
+﻿using System.Data.Entity;
 using System.Web.Http;
 using LifeInsuranceAPI.Models;
 using System.Threading.Tasks;
@@ -26,6 +20,7 @@ namespace LifeInsuranceAPI.Controllers
             if (request.EmailAddress == "admin@gmail.com" && request.Password == "admin123")
             {
                 request.Role = "admin";
+                request.Id = 1;
                 var token = JwtHelper.CreateJwtToken(request);
                 return Ok(new { success = true, message = "Succesfully logged in", token = token });
             }
@@ -34,12 +29,14 @@ namespace LifeInsuranceAPI.Controllers
 
         [HttpGet]
         [Route("api/admin/admin-dashboard")]
+        [Authorize(Roles = "admin")]
         public IHttpActionResult AdminDashboard() {
             return Ok(new { email = "admin@gmail.com", password = "admin123"});
         }
 
         [HttpGet]
         [Route("api/admin/get-users")]
+        [Authorize(Roles = "admin")]
         public async Task<IHttpActionResult> GetUsers() {
             var users = await _context.Users
                                         .Include(u => u.UserDetails)
@@ -52,6 +49,7 @@ namespace LifeInsuranceAPI.Controllers
 
         [HttpGet]
         [Route("api/admin/get-user/{id}")]
+        [Authorize(Roles = "admin")]
         public async Task<IHttpActionResult> GetUser(int id)
         {
             var user = await _context.Users
@@ -67,6 +65,7 @@ namespace LifeInsuranceAPI.Controllers
 
         [HttpDelete]
         [Route("api/admin/delete-user/{id}")]
+        [Authorize(Roles = "admin")]
         public async Task<IHttpActionResult> DeleteUser(int id) { 
             User userInDb = await _context.Users.SingleOrDefaultAsync(u => u.Id == id);
             if (userInDb == null)
@@ -78,6 +77,7 @@ namespace LifeInsuranceAPI.Controllers
 
         [HttpGet]
         [Route("api/admin/get-employees")]
+        [Authorize(Roles = "admin")]
         public async Task<IHttpActionResult> GetEmployees()
         {
             var employees = await _context.Employees
@@ -88,6 +88,7 @@ namespace LifeInsuranceAPI.Controllers
 
         [HttpGet]
         [Route("api/admin/get-employee/{id}")]
+        [Authorize(Roles = "admin")]
         public async Task<IHttpActionResult> GetEmployee(int id)
         {
             var employee = await _context.Employees
@@ -100,6 +101,7 @@ namespace LifeInsuranceAPI.Controllers
 
         [HttpDelete]
         [Route("api/admin/delete-employee/{id}")]
+        [Authorize(Roles = "admin")]
         public async Task<IHttpActionResult> DeleteEmployee(int id)
         {
             Employee employeeInDb = await _context.Employees.SingleOrDefaultAsync(e => e.Id == id);
@@ -112,6 +114,7 @@ namespace LifeInsuranceAPI.Controllers
 
         [HttpGet]
         [Route("api/admin/get-policies")]
+        [Authorize(Roles = "admin")]
         public async Task<IHttpActionResult> GetPolicies()
         {
             var policies = await _context.Policies
@@ -122,6 +125,7 @@ namespace LifeInsuranceAPI.Controllers
 
         [HttpGet]
         [Route("api/admin/get-policy/{id}")]
+        [Authorize(Roles = "admin")]
         public async Task<IHttpActionResult> GetPolicy(int id)
         {
             var policy = await _context.Policies
@@ -134,6 +138,7 @@ namespace LifeInsuranceAPI.Controllers
 
         [HttpDelete]
         [Route("api/admin/delete-policy/{id}")]
+        [Authorize(Roles = "admin")]
         public async Task<IHttpActionResult> DeletePolicy(int id)
         {
             Policy policyInDb = await _context.Policies.SingleOrDefaultAsync(p => p.Id == id);
@@ -146,6 +151,7 @@ namespace LifeInsuranceAPI.Controllers
 
         [HttpGet]
         [Route("api/admin/get-policy-types")]
+        [Authorize(Roles = "admin")]
         public async Task<IHttpActionResult> GetPolicyTypes()
         {
             var policyTypes = await _context.PolicyTypes.ToListAsync();
@@ -154,6 +160,7 @@ namespace LifeInsuranceAPI.Controllers
 
         [HttpGet]
         [Route("api/admin/get-policy-type/{id}")]
+        [Authorize(Roles = "admin")]
         public async Task<IHttpActionResult> GetPolicyType(int id)
         {
             var policyType = await _context.PolicyTypes.SingleOrDefaultAsync(p => p.Id == id);
@@ -164,6 +171,7 @@ namespace LifeInsuranceAPI.Controllers
 
         [HttpDelete]
         [Route("api/admin/delete-policy-types/{id}")]
+        [Authorize(Roles = "admin")]
         public async Task<IHttpActionResult> DeletePolicyTypes(int id)
         {
             PolicyType policyTypeInDb = await _context.PolicyTypes.SingleOrDefaultAsync(pt => pt.Id == id);

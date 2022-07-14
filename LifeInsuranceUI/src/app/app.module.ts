@@ -28,6 +28,11 @@ import { GetUsersComponent } from './get-users/get-users.component';
 import { GetUserComponent } from './get-user/get-user.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 
+import { JwtModule } from '@auth0/angular-jwt';
+
+export function tokenGetter(){
+  return localStorage.getItem("token");
+}
 
 @NgModule({
   declarations: [
@@ -54,7 +59,14 @@ import { EditUserComponent } from './edit-user/edit-user.component';
     AppRoutingModule,
     RouterModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    JwtModule.forRoot({
+      config:{
+        tokenGetter: tokenGetter,
+        allowedDomains: ["localhost:4200"],
+        disallowedRoutes: []
+      }
+    })
   ],
   providers: [AuthenticationService, SharedService, AuthGuard, {
     provide: HTTP_INTERCEPTORS,

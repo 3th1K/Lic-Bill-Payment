@@ -31,4 +31,8 @@ export class AuthenticationService {
   adminDashboard(){
     return this.http.get(this.url+'/admin/admin-dashboard');
   }
+
+  userLogin(data:any):Observable<any>{
+    return this.http.post(this.url+'/user/login', data);
+  }
 }
