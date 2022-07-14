@@ -27,6 +27,9 @@ import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
 import { GetUsersComponent } from './get-users/get-users.component';
 import { GetUserComponent } from './get-user/get-user.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { GetPoliciesComponent } from './get-policies/get-policies.component';
+import { GetPolicyComponent } from './get-policy/get-policy.component';
+import { EditPolicyComponent } from './edit-policy/edit-policy.component';
 
 import { JwtModule } from '@auth0/angular-jwt';
 
@@ -51,7 +54,10 @@ export function tokenGetter(){
     EditEmployeeComponent,
     GetUsersComponent,
     GetUserComponent,
-    EditUserComponent
+    EditUserComponent,
+    GetPoliciesComponent,
+    GetPolicyComponent,
+    EditPolicyComponent
 
   ],
   imports: [
