@@ -32,6 +32,7 @@ import { GetPolicyComponent } from './get-policy/get-policy.component';
 import { EditPolicyComponent } from './edit-policy/edit-policy.component';
 
 import { JwtModule } from '@auth0/angular-jwt';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 
 export function tokenGetter(){
   return localStorage.getItem("token");
@@ -57,7 +58,8 @@ export function tokenGetter(){
     EditUserComponent,
     GetPoliciesComponent,
     GetPolicyComponent,
-    EditPolicyComponent
+    EditPolicyComponent,
+    UserDashboardComponent
 
   ],
   imports: [

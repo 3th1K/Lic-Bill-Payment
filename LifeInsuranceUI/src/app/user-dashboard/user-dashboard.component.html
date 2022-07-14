@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- bootstrap 4 cdn -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <!-- date picker (in basic information and for employee experience) cdn from https://tempusdominus.github.io -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
+    <!-- country state city dropdown  -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//geodata.solutions/includes/countrystatecity.js"></script>
+    <!-- fontasweone 5 local -->
+    <script src="./fontawesome_5.11.2/js/all.js"></script>
+    <script src="./fontawesome_5.11.2/js/all.min.js"></script>
+    <!-- local styles --> 
+    <script src="./dashboard.js"></script>
+    <link rel="stylesheet" >
+    
+    <script>
+        // script for facebook button 
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '{your-app-id}',
+                cookie: true,
+                xfbml: true,
+                version: '{api-version}'
+            });
+
+            FB.AppEvents.logPageView();
+
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <title>Dashboard | Admin</title>
+</head>
+
+<body style="background-image: url(https://cdn.hipwallpaper.com/i/71/40/eDtqgp.jpg);" class="img-fluid h-100" >
+   
+    <!-- <div class="container-fluid pt-5"> -->
+    <div class="pt-2 pb-5">
+        <div class="row col-sm-12 pt-5 ml-0">
+            <div class="col-sm-3 pb-3">
+               
+                <div class="container-fluid p-3 border bg-light rounded">
+                    <div>
+                        <p class=" h4 text-center">User Dashboard</p>
+                    </div>
+                    <div class=" container border-top">
+                        <div class="row">
+                            <div class="col pt-2">
+                                <img src="assets\images\allthings.how-how-to-change-your-profile-picture-on-google-meet-profile-photo-759x427.webp" alt="Profile Picture" class="img-thumbnail ">
+                            </div>
+                            <div class="row pt-4">
+                                <p><b>Age :</b> 26</p>
+                                <p><b>Name :</b> Abc </p>
+                                <p><b>Date Of Birth :</b> 14/03/1999</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion shadow text-center font-weight-bold" id="accordionExample">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link text-decoration-none font-weight-bold" type="button" data-toggle="collapse"
+                                    data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-id-badge"></i>&nbsp;&nbsp;&nbsp;&nbsp;My Profile
+                                </button>
+                            </h2>
+                        </div>
+                
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <div class="col-sm">
+                                    <div class="list-group" id="list-tab" role="tablist">
+                                        <a class="list-group-item list-group-item-action active" id="list-updateprofile-list"
+                                            data-toggle="list" href="#list-updateprofile" role="tab"
+                                            aria-controls="updateprofile">Update Profile</a>
+                                        <a class="list-group-item list-group-item-action" id="list-viewprofile-list" data-toggle="list"
+                                            href="#list-viewprofile" role="tab" aria-controls="viewprofile">View Profile</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingFive">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link collapsed text-decoration-none font-weight-bold" type="button"
+                                    data-toggle="collapse" data-target="#collapseFive" aria-expanded="false"
+                                    aria-controls="collapseFive"><i class="fa fa-calendar-check"></i>&nbsp;&nbsp;&nbsp;&nbsp;Events
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <div class="col-sm">
+                                    <div class="list-group" id="list-tab" role="tablist">
+                                        <a class="list-group-item list-group-item-action" id="list-remainder-list" data-toggle="list" href="#list-remainder" role="tab" aria-controls="remainder"><i class="fa fa-calendar-plus"></i>&nbsp;&nbsp;&nbsp;&nbsp;Set Remainder</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <div class="bg-light border rounded shadow">
+                    <div class="container">
+                        <p class="h3 p-3">Your Profile </p>
+                    </div>
+                    <div class="col-sm pb-4">
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="list-updateprofile" role="tabpanel"
+                                aria-labelledby="list-updateprofile-list">
+                                <div class="container-fluid">
+                                    <nav>
+                                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                            <a class="nav-item nav-link active" id="nav-basicinfo-tab" data-toggle="tab"
+                                                href="#nav-basicinfo" role="tab" aria-controls="nav-basicinfo"
+                                                aria-selected="true">Basic Information</a>
+                                            <a class="nav-item nav-link" id="nav-address-tab" data-toggle="tab"
+                                                href="#nav-address" role="tab" aria-controls="nav-address"
+                                                aria-selected="false">Address</a>
+                                            
+                                        </div>
+                                    </nav>
+                                    <div class="tab-content bg-white p-4 border border-top-0" id="nav-tabContent">
+                                        <div class="tab-pane fade show active pt-2" id="nav-basicinfo" role="tabpanel"
+                                            aria-labelledby="nav-basicinfo-tab">
+                                            <div class="pb-4">
+                                                <div class="card shadow">
+                                                    <div class="card-header font-weight-bold h4">
+                                                        Personal Information
+                                                    </div>
+                                                    <div class="card-body shadow-sm">
+                                                        <form class="needs-validation" novalidate>
+                                                            <div class="form-row">
+                                                                <div class="col-sm-4 mb-3">
+                                                                    <label for="validationCustom01"
+                                                                        class="font-weight-bold" >First name</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="validationCustom01" placeholder="First name"
+                                                                        value="Gideon" required>
+                                                                    <div class="valid-feedback">
+                                                                        Looks good!
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-4 mb-3">
+                                                                    <label for="validationCustom02"
+                                                                        class="font-weight-bold">Last name</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="validationCustom02" placeholder="Last name"
+                                                                        value="Gandrapu" required>
+                                                                    <div class="valid-feedback">
+                                                                        Looks good!
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-4 mb-3">
+                                                                    <label for="validationCustomUsername"
+                                                                        class="font-weight-bold">Phone Number</label>
+                                                                    <div class="input-group">
+                                                                        
+                                                                        <input type="number" class="form-control"
+                                                                            id="validationCustomUsername"
+                                                                            placeholder="Phone Number"
+                                                                            aria-describedby="inputGroupPrepend"
+                                                                            required>
+                                                                        <div class="invalid-feedback">
+                                                                            Enter Phone Number
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form">
+                                                                <div class="form-group row">
+                                                                    <label for="staticEmail"
+                                                                        class="col-sm-2 col-form-label font-weight-bold">Email</label>
+                                                                    <div class="col-sm-10">
+                                                                        <input type="text" readonly
+                                                                            class="form-control-plaintext "
+                                                                            id="staticEmail" value="gideongandrapu@gmail.com">
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                            </div>
+
+                                                            <div class="text-center pt-4 pb-2">
+                                                                <div class="form-group">
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="checkbox"
+                                                                            value="" id="invalidCheck" required>
+                                                                        <label class="form-check-label"
+                                                                            for="invalidCheck">
+                                                                            Agree to terms and conditions
+                                                                        </label>
+                                                                        <div class="invalid-feedback">
+                                                                            You must agree before submitting.
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <button class="btn btn-primary" type="submit">Save your
+                                                                    information</button>
+                                                            </div>
+                                                        </form>
+
+                                                        <script>
+                                                            // Example starter JavaScript for disabling form submissions if there are invalid fields
+                                                            (function () {
+                                                                'use strict';
+                                                                window.addEventListener('load', function () {
+                                                                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                                                                    var forms = document.getElementsByClassName('needs-validation');
+                                                                    // Loop over them and prevent submission
+                                                                    var validation = Array.prototype.filter.call(forms, function (form) {
+                                                                        form.addEventListener('submit', function (event) {
+                                                                            if (form.checkValidity() === false) {
+                                                                                event.preventDefault();
+                                                                                event.stopPropagation();
+                                                                            }
+                                                                            form.classList.add('was-validated');
+                                                                        }, false);
+                                                                    });
+                                                                }, false);
+                                                            })();
+                                                        </script>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                                
+                                            
+                                        </div>
+                                        <div class="tab-pane fade pt-2" id="nav-address" role="tabpanel"
+                                            aria-labelledby="nav-address-tab">
+                                            <div class="pb-4">
+                                                <div class="card shadow">
+                                                    <div class="card-header font-weight-bold h4">
+                                                        Current Address
+                                                    </div>
+                                                    <div class="card-body shadow-sm">
+                                                        <!-- <form class="was-validated"> -->
+                                                        <form class="needs-validation">
+                                                            <div class="">
+                                                                <div class="col mb-6">
+                                                                    <div>
+                                                                        <label for="validationTextarea"
+                                                                            class="font-weight-bold">Address Line 1</label>
+                                                                    </div>
+                                                                    <div>
+                                                                        
+                                                                            <input type="text" class="form-control" id="validationProjectname" placeholder="Enter Address" required>
+                                                                    <div class="valid-feedback">
+                                                                        Looks good!
+                                                                    </div>
+                                                                        
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="">
+                                                                <div class="col mb-6">
+                                                                    <div>
+                                                                        <label for="validationTextarea"
+                                                                            class="font-weight-bold">Address Line 2</label>
+                                                                    </div>
+                                                                    <div>
+                                                                        <input type="text" class="form-control" id="validationProjectname" placeholder="Enter Address" required>
+                                                                <div class="valid-feedback">
+                                                                    Looks good!
+                                                                </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            
+
+                                                            <div class="">
+                                                                <div class="col mb-3">
+                                                                    <div>
+                                                                        <label for="validationTextarea"
+                                                                            class="font-weight-bold">City</label>
+                                                                    </div>
+                                                                    <div>
+                                                                        <input type="text" class="form-control" id="validationProjectname" placeholder="Enter City" required>
+                                                                <div class="valid-feedback">
+                                                                    Looks good!
+                                                                </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="">
+                                                                <div class="col mb-3">
+                                                                    <div>
+                                                                        <label for="validationTextarea"
+                                                                            class="font-weight-bold">State</label>
+                                                                    </div>
+                                                                    <div>
+                                                                        <input type="text" class="form-control" id="validationProjectname" placeholder="Enter State"
+                                                                    required>
+                                                                <div class="valid-feedback">
+                                                                    Looks good!
+                                                                </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="">
+                                                                <div class="col mb-3">
+                                                                    <div>
+                                                                        <label for="validationTextarea"
+                                                                            class="font-weight-bold">Zip Code</label>
+                                                                    </div>
+                                                                    <div>
+                                                                        <input type="number" class="form-control" id="validationProjectname" placeholder="Enter Zip Code"
+                                                                    required>
+                                                                <div class="valid-feedback">
+                                                                    Looks good!
+                                                                </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            
+                                                            
+                                                            <div class="text-center pt-4">
+                                                                <button type="submit" class="btn btn-primary ">Save
+                                                                    Address</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                        
+                                       
+                                        
+
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="list-viewprofile" role="tabpanel"
+                                aria-labelledby="list-viewprofile-list">
+                                <div class="card-columns">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Personal Information 
+                                            </h5>
+                                            <br>
+                                            <p class="card-text"> First Name : </p>
+                                            <p class="card-text"> Last Name : </p>
+                                            <p class="card-text"> Email : </p>
+                                            <p class="card-text"> Mobile Number :</p>
+                                            <p class="card-text"> Gender :</p>
+                                            <p class="card-text"> Date Of Birth :</p>
+                                            <p class="card-text"> Address :</p>
+
+
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Policy Information 
+                                            </h5>
+                                            <br>
+                                            <p class="card-text"> Policy ID : </p>
+                                            <p class="card-text"> Policy Name :</p>
+                                            <p class="card-text"> Monthly Installment :</p>
+                                            <p class="card-text"> Total Duration :</p>
+                                            <p class="card-text"> Due Date :</p>
+                                            <p class="card-text"> Payment Type :</p>
+                                            <p class="card-text"> Amount to be Paid  :</p>
+                                            
+
+
+                                        </div>
+                                        <div class="pt-3 text-center">
+                                            <button type="button" class="btn btn-primary text-center">Proceed to Payment</button>
+                                        </div>
+                                        <br>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Other Information 
+                                            </h5>
+                                            <br>
+                                            <p class="card-text"> Aadhar Card Number : </p>
+                                            <p class="card-text"> PAN Card Number : </p>
+                        
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+</html>
