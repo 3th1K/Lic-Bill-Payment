@@ -33,6 +33,10 @@ import { EditPolicyComponent } from './edit-policy/edit-policy.component';
 
 import { JwtModule } from '@auth0/angular-jwt';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { EmployeeDashboardComponent } from './employee-dashboard/employee-dashboard.component';
+import { ApplyEmployeeComponent } from './apply-employee/apply-employee.component';
+import { PaymentPageComponent } from './payment-page/payment-page.component';
+import { FinalPageComponent } from './final-page/final-page.component';
 
 export function tokenGetter(){
   return localStorage.getItem("token");
@@ -59,7 +63,11 @@ export function tokenGetter(){
     GetPoliciesComponent,
     GetPolicyComponent,
     EditPolicyComponent,
-    UserDashboardComponent
+    UserDashboardComponent,
+    EmployeeDashboardComponent,
+    ApplyEmployeeComponent,
+    PaymentPageComponent,
+    FinalPageComponent
 
   ],
   imports: [

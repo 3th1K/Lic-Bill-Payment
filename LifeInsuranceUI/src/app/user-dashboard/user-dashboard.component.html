@@ -73,10 +73,10 @@
                             <div class="card-body">
                                 <div class="col-sm">
                                     <div class="list-group" id="list-tab" role="tablist">
-                                        <a class="list-group-item list-group-item-action active" id="list-updateprofile-list"
+                                        <a class="list-group-item list-group-item-action " id="list-updateprofile-list"
                                             data-toggle="list" href="#list-updateprofile" role="tab"
                                             aria-controls="updateprofile">Update Profile</a>
-                                        <a class="list-group-item list-group-item-action" id="list-viewprofile-list" data-toggle="list"
+                                        <a class="list-group-item list-group-item-action active" id="list-viewprofile-list" data-toggle="list"
                                             href="#list-viewprofile" role="tab" aria-controls="viewprofile">View Profile</a>
                                     </div>
                                 </div>
@@ -427,7 +427,7 @@
 
                                         </div>
                                         <div class="pt-3 text-center" *ngIf="userDetails.TenureOfPolicy">
-                                            <button type="button" class="btn btn-primary text-center">Proceed to Payment</button>
+                                            <button type="button" class="btn btn-primary text-center" [routerLink]="['../payment-page']">Proceed to Payment</button>
                                         </div>
                                         <div class="pt-3 text-center" *ngIf="!userDetails.TenureOfPolicy">
                                             <p calss="card-text">*Please Enter The Tenure*</p>
