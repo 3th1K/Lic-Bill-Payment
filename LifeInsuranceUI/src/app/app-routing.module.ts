@@ -16,6 +16,8 @@ import { GetEmployeesComponent } from './get-employees/get-employees.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { EmployeeDashboardComponent } from './employee-dashboard/employee-dashboard.component';
 import { ApplyEmployeeComponent } from './apply-employee/apply-employee.component';
+import { PaymentPageComponent } from './payment-page/payment-page.component';
+import { FinalPageComponent } from './final-page/final-page.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'home'},
@@ -29,6 +31,8 @@ const routes: Routes = [
   {path:'user-dashboard', component:UserDashboardComponent},
   {path:'employee-dashboard', component:EmployeeDashboardComponent},
   {path:'apply-employee', component:ApplyEmployeeComponent},
+  {path:'payment-page', component:PaymentPageComponent},
+  {path:'final-page', component:FinalPageComponent},
   {path:'get-users', component:GetUsersComponent, canActivate:[AuthGuard]},
   {path:'get-user', component:GetUserComponent, canActivate:[AuthGuard]},
   {path:'edit-user', component:EditUserComponent, canActivate:[AuthGuard]},
