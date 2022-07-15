@@ -1,5 +1,3 @@
-import { Address } from "./address";
-
 export class Employee {
     Id: number;
     FirstName: string;

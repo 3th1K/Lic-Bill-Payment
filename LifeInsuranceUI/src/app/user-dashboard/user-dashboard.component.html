@@ -33,30 +33,6 @@
     <!-- local styles --> 
     <script src="./dashboard.js"></script>
     <link rel="stylesheet" >
-    
-    <script>
-        // script for facebook button 
-        window.fbAsyncInit = function () {
-            FB.init({
-                appId: '{your-app-id}',
-                cookie: true,
-                xfbml: true,
-                version: '{api-version}'
-            });
-
-            FB.AppEvents.logPageView();
-
-        };
-
-        (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) { return; }
-            js = d.createElement(s); js.id = id;
-            js.src = "https://connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
-    <title>Dashboard | Admin</title>
 </head>
 
 <body style="background-image: url(https://cdn.hipwallpaper.com/i/71/40/eDtqgp.jpg);" class="img-fluid h-100" >
@@ -76,9 +52,9 @@
                                 <img src="assets\images\allthings.how-how-to-change-your-profile-picture-on-google-meet-profile-photo-759x427.webp" alt="Profile Picture" class="img-thumbnail ">
                             </div>
                             <div class="row pt-4">
-                                <p><b>Age :</b> 26</p>
-                                <p><b>Name :</b> Abc </p>
-                                <p><b>Date Of Birth :</b> 14/03/1999</p>
+                                <p><b>Full Name :</b> {{user.FirstName+" "+user.LastName}}</p>
+                                <!--<p *ngIf="user.UserDetails.DateOfBirth"><b>Age :</b> 26</p>
+                                <p *ngIf="user.UserDetails.DateOfBirth"><b>Date Of Birth :</b> {{user.UserDetails.DateOfBirth}}</p>-->
                             </div>
                         </div>
                     </div>
@@ -145,7 +121,7 @@
                                                 aria-selected="true">Basic Information</a>
                                             <a class="nav-item nav-link" id="nav-address-tab" data-toggle="tab"
                                                 href="#nav-address" role="tab" aria-controls="nav-address"
-                                                aria-selected="false">Address</a>
+                                                aria-selected="false">User Details</a>
                                             
                                         </div>
                                     </nav>
@@ -158,73 +134,37 @@
                                                         Personal Information
                                                     </div>
                                                     <div class="card-body shadow-sm">
-                                                        <form class="needs-validation" novalidate>
+                                                        <form [formGroup]="userUpdationForm" #f="ngForm">
                                                             <div class="form-row">
-                                                                <div class="col-sm-4 mb-3">
-                                                                    <label for="validationCustom01"
-                                                                        class="font-weight-bold" >First name</label>
-                                                                    <input type="text" class="form-control"
-                                                                        id="validationCustom01" placeholder="First name"
-                                                                        value="Gideon" required>
-                                                                    <div class="valid-feedback">
-                                                                        Looks good!
-                                                                    </div>
+                                                                <div class="col-sm mb-3">
+                                                                    <label for="firstName" class="font-weight-bold">First name</label>
+                                                                    <input type="text" id="firstName" class="form-control" formControlName="FirstName"  [ngClass]="{'valid-data':f.submitted && !userUpdationForm.controls.FirstName.errors, 'invalid-data':f.submitted && userUpdationForm.controls.FirstName.errors}"/>
                                                                 </div>
-                                                                <div class="col-sm-4 mb-3">
-                                                                    <label for="validationCustom02"
-                                                                        class="font-weight-bold">Last name</label>
-                                                                    <input type="text" class="form-control"
-                                                                        id="validationCustom02" placeholder="Last name"
-                                                                        value="Gandrapu" required>
-                                                                    <div class="valid-feedback">
-                                                                        Looks good!
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-sm-4 mb-3">
-                                                                    <label for="validationCustomUsername"
-                                                                        class="font-weight-bold">Phone Number</label>
-                                                                    <div class="input-group">
-                                                                        
-                                                                        <input type="number" class="form-control"
-                                                                            id="validationCustomUsername"
-                                                                            placeholder="Phone Number"
-                                                                            aria-describedby="inputGroupPrepend"
-                                                                            required>
-                                                                        <div class="invalid-feedback">
-                                                                            Enter Phone Number
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
+                                                                <div class="col-sm mb-3">
+                                                                    <label for="lastName" class="font-weight-bold">Last name</label>
+                                                                    <input type="text" id="lastName" class="form-control" formControlName="LastName"  [ngClass]="{'valid-data':f.submitted && !userUpdationForm.controls.LastName.errors, 'invalid-data':f.submitted && userUpdationForm.controls.LastName.errors}"/>
+                                                                </div>                                                
                                                             </div>
                                                             <div class="form">
-                                                                <div class="form-group row">
-                                                                    <label for="staticEmail"
-                                                                        class="col-sm-2 col-form-label font-weight-bold">Email</label>
-                                                                    <div class="col-sm-10">
-                                                                        <input type="text" readonly
-                                                                            class="form-control-plaintext "
-                                                                            id="staticEmail" value="gideongandrapu@gmail.com">
-                                                                    </div>
-                                                                </div>
-                                                                
-                                                            </div>
-
-                                                            <div class="text-center pt-4 pb-2">
                                                                 <div class="form-group">
-                                                                    <div class="form-check">
-                                                                        <input class="form-check-input" type="checkbox"
-                                                                            value="" id="invalidCheck" required>
-                                                                        <label class="form-check-label"
-                                                                            for="invalidCheck">
-                                                                            Agree to terms and conditions
-                                                                        </label>
-                                                                        <div class="invalid-feedback">
-                                                                            You must agree before submitting.
-                                                                        </div>
-                                                                    </div>
+                                                                    <label for="email" class="font-weight-bold">Email</label>
+                                                                    <input type="email" id="email" class="form-control" formControlName="Email"  [ngClass]="{'valid-data':f.submitted && !userUpdationForm.controls.Email.errors, 'invalid-data':f.submitted && userUpdationForm.controls.Email.errors}"/>
                                                                 </div>
-                                                                <button class="btn btn-primary" type="submit">Save your
-                                                                    information</button>
+                                                            </div>
+                                                            <div class="form-row">
+                                                                <div class="col-sm-4 mb-3">
+                                                                    <label for="gender" class="font-weight-bold">Gender</label>
+                                                                    <input type="text" id="gender" class="form-control" formControlName="Gender"  [ngClass]="{'valid-data':f.submitted && !userUpdationForm.controls.Gender.errors, 'invalid-data':f.submitted && userUpdationForm.controls.Gender.errors}"/>
+                                                                </div>
+                                                               
+                                                                <div class="col-sm-4 mb-3">
+                                                                    <label for="phoneNumber" class="font-weight-bold">Phone Number</label>
+                                                                    <input type="tel" id="phoneNumber" class="form-control" formControlName="PhoneNumber"  [ngClass]="{'valid-data':f.submitted && !userUpdationForm.controls.PhoneNumber.errors, 'invalid-data':f.submitted && userUpdationForm.controls.PhoneNumber.errors}"/>
+                                                                </div>
+                                                            </div>
+                                                           
+                                                            <div class="text-center pt-4 pb-2">
+                                                                <button class="btn btn-primary" type="submit" (click)="onUpdateUser()">Update Basic Details</button>
                                                             </div>
                                                         </form>
 
@@ -264,20 +204,45 @@
                                                     </div>
                                                     <div class="card-body shadow-sm">
                                                         <!-- <form class="was-validated"> -->
-                                                        <form class="needs-validation">
+                                                        <form [formGroup]="userDetailsUpdationForm" #f="ngForm">
+                                                             <div class="form-row col-sm">
+                                                                <div class="col-sm mb-3">
+                                                                    <label for="dob" class="font-weight-bold">Date Of Birth</label>
+                                                                    <input type="date" id="dob" class="form-control" formControlName="DateOfBirth" [ngClass]="{'valid-data':f.submitted && !userDetailsUpdationForm.controls.DateOfBirth.errors, 'invalid-data':f.submitted && userDetailsUpdationForm.controls.DateOfBirth.errors}"/>
+                                                                </div>
+                                                                <div class="col-sm mb-3">
+                                                                    <label for="ms" class="font-weight-bold">Martial Status</label>
+                                                                    <input type="text" id="ms" class="form-control" formControlName="MartialStatus"  [ngClass]="{'valid-data':f.submitted && !userDetailsUpdationForm.controls.MartialStatus.errors, 'invalid-data':f.submitted && userDetailsUpdationForm.controls.MartialStatus.errors}"/>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row col-sm">
+                                                                <div class="col-sm mb-3">
+                                                                    <label for="occupation" class="font-weight-bold">Occupation</label>
+                                                                    <input type="text" id="occupation" class="form-control" formControlName="Occupation"  [ngClass]="{'valid-data':f.submitted && !userDetailsUpdationForm.controls.Occupation.errors, 'invalid-data':f.submitted && userDetailsUpdationForm.controls.Occupation.errors}"/>
+                                                                </div>
+                                                                <div class="col-sm mb-3">
+                                                                    <label for="salary" class="font-weight-bold">Salary</label>
+                                                                    <input type="text" id="salary" class="form-control" formControlName="Salary"  [ngClass]="{'valid-data':f.submitted && !userDetailsUpdationForm.controls.Salary.errors, 'invalid-data':f.submitted && userDetailsUpdationForm.controls.Salary.errors}"/>
+                                                                </div>                                                
+                                                            </div>
+                                                            <div class="form-row col-sm">
+                                                                <div class="col-sm mb-3">
+                                                                    <label for="aadhar" class="font-weight-bold">Aadhar Number</label>
+                                                                    <input type="text" id="aadhar" class="form-control" formControlName="AadharNumber"  [ngClass]="{'valid-data':f.submitted && !userDetailsUpdationForm.controls.AadharNumber.errors, 'invalid-data':f.submitted && userDetailsUpdationForm.controls.AadharNumber.errors}"/>
+                                                                </div>
+                                                                <div class="col-sm mb-3">
+                                                                    <label for="pan" class="font-weight-bold">Pan Number</label>
+                                                                    <input type="text" id="pan" class="form-control" formControlName="PanNumber"  [ngClass]="{'valid-data':f.submitted && !userDetailsUpdationForm.controls.PanNumber.errors, 'invalid-data':f.submitted && userDetailsUpdationForm.controls.PanNumber.errors}"/>
+                                                                </div>                                                
+                                                            </div>
                                                             <div class="">
                                                                 <div class="col mb-6">
                                                                     <div>
-                                                                        <label for="validationTextarea"
+                                                                        <label for="ad1"
                                                                             class="font-weight-bold">Address Line 1</label>
                                                                     </div>
                                                                     <div>
-                                                                        
-                                                                            <input type="text" class="form-control" id="validationProjectname" placeholder="Enter Address" required>
-                                                                    <div class="valid-feedback">
-                                                                        Looks good!
-                                                                    </div>
-                                                                        
+                                                                        <input type="text" id="ad1" class="form-control" formControlName="StreetAddressLine1"  [ngClass]="{'valid-data':f.submitted && !userDetailsUpdationForm.controls.StreetAddressLine1.errors, 'invalid-data':f.submitted && userDetailsUpdationForm.controls.StreetAddressLine1.errors}"/>                                                                        
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -285,71 +250,46 @@
                                                             <div class="">
                                                                 <div class="col mb-6">
                                                                     <div>
-                                                                        <label for="validationTextarea"
+                                                                        <label for="ad2"
                                                                             class="font-weight-bold">Address Line 2</label>
                                                                     </div>
                                                                     <div>
-                                                                        <input type="text" class="form-control" id="validationProjectname" placeholder="Enter Address" required>
-                                                                <div class="valid-feedback">
-                                                                    Looks good!
-                                                                </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            
-
-                                                            <div class="">
-                                                                <div class="col mb-3">
-                                                                    <div>
-                                                                        <label for="validationTextarea"
-                                                                            class="font-weight-bold">City</label>
-                                                                    </div>
-                                                                    <div>
-                                                                        <input type="text" class="form-control" id="validationProjectname" placeholder="Enter City" required>
-                                                                <div class="valid-feedback">
-                                                                    Looks good!
-                                                                </div>
+                                                                        <input type="text" id="ad2" class="form-control" formControlName="StreetAddressLine2"  [ngClass]="{'valid-data':f.submitted && !userDetailsUpdationForm.controls.StreetAddressLine2.errors, 'invalid-data':f.submitted && userDetailsUpdationForm.controls.StreetAddressLine2.errors}"/>                                                                        
                                                                     </div>
                                                                 </div>
                                                             </div>
 
-                                                            <div class="">
-                                                                <div class="col mb-3">
-                                                                    <div>
-                                                                        <label for="validationTextarea"
-                                                                            class="font-weight-bold">State</label>
-                                                                    </div>
-                                                                    <div>
-                                                                        <input type="text" class="form-control" id="validationProjectname" placeholder="Enter State"
-                                                                    required>
-                                                                <div class="valid-feedback">
-                                                                    Looks good!
+                                                            <div class="form-row col-sm">
+                                                                <div class="col-sm mb-3">
+                                                                    <label for="state" class="font-weight-bold">State</label>
+                                                                    <input type="text" id="state" class="form-control" formControlName="State"  [ngClass]="{'valid-data':f.submitted && !userDetailsUpdationForm.controls.State.errors, 'invalid-data':f.submitted && userDetailsUpdationForm.controls.State.errors}"/>
                                                                 </div>
-                                                                    </div>
-                                                                </div>
+                                                                <div class="col-sm mb-3">
+                                                                    <label for="city" class="font-weight-bold">City</label>
+                                                                    <input type="text" id="city" class="form-control" formControlName="City"  [ngClass]="{'valid-data':f.submitted && !userDetailsUpdationForm.controls.City.errors, 'invalid-data':f.submitted && userDetailsUpdationForm.controls.City.errors}"/>
+                                                                </div>   
+                                                                <div class="col-sm mb-3">
+                                                                    <label for="zip" class="font-weight-bold">Zip Code</label>
+                                                                    <input type="text" id="zip" class="form-control" formControlName="ZipCode"  [ngClass]="{'valid-data':f.submitted && !userDetailsUpdationForm.controls.ZipCode.errors, 'invalid-data':f.submitted && userDetailsUpdationForm.controls.ZipCode.errors}"/>
+                                                                </div>                                             
+                                                            </div>
+                                                            <div class="form-row col-sm" *ngIf="!userDetails.PolicyId">
+                                                                <label for="policy" class="font-weight-bold">Select Policy</label>
+                                                                <select id="policy" formControlName="PolicyId" class="form-control">
+                                                                    <option disabled>Select Policy</option>
+                                                                    <option *ngFor="let policy of policies" value="{{policy.Id | number}}">{{policy.Name}}</option>
+                                                                </select>
+                                                                <div class="col-sm mb-3">
+                                                                    <label for="tenure" class="font-weight-bold">Tenure Of Policy in Numbers</label>
+                                                                    <input type="number" id="tenure" class="form-control" formControlName="TenureOfPolicy"  [ngClass]="{'valid-data':f.submitted && !userDetailsUpdationForm.controls.TenureOfPolicy.errors, 'invalid-data':f.submitted && userDetailsUpdationForm.controls.TenureOfPolicy.errors}"/>
+                                                                </div> 
+        
+
                                                             </div>
 
-                                                            <div class="">
-                                                                <div class="col mb-3">
-                                                                    <div>
-                                                                        <label for="validationTextarea"
-                                                                            class="font-weight-bold">Zip Code</label>
-                                                                    </div>
-                                                                    <div>
-                                                                        <input type="number" class="form-control" id="validationProjectname" placeholder="Enter Zip Code"
-                                                                    required>
-                                                                <div class="valid-feedback">
-                                                                    Looks good!
-                                                                </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            
                                                             
                                                             <div class="text-center pt-4">
-                                                                <button type="submit" class="btn btn-primary ">Save
-                                                                    Address</button>
+                                                                <button type="submit" class="btn btn-primary" (click)="onUpdateUserDetails()">Update Details</button>
                                                             </div>
                                                         </form>
                                                     </div>
@@ -371,45 +311,227 @@
                                             <h5 class="card-title">Personal Information 
                                             </h5>
                                             <br>
-                                            <p class="card-text"> First Name : </p>
-                                            <p class="card-text"> Last Name : </p>
-                                            <p class="card-text"> Email : </p>
-                                            <p class="card-text"> Mobile Number :</p>
-                                            <p class="card-text"> Gender :</p>
-                                            <p class="card-text"> Date Of Birth :</p>
-                                            <p class="card-text"> Address :</p>
-
-
-                                        </div>
-                                    </div>
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Policy Information 
-                                            </h5>
+                                            <div class="row">
+                                                    <div class="col-md-6">
+                                                        <p class="card-text"> First Name :</p>
+                                                    </div>
+                                                    <div class="animated col-md">
+                                                        <p class="card-text"> {{user.FirstName}}</p>
+                                                    </div>
+                                            </div>
                                             <br>
-                                            <p class="card-text"> Policy ID : </p>
-                                            <p class="card-text"> Policy Name :</p>
-                                            <p class="card-text"> Monthly Installment :</p>
-                                            <p class="card-text"> Total Duration :</p>
-                                            <p class="card-text"> Due Date :</p>
-                                            <p class="card-text"> Payment Type :</p>
-                                            <p class="card-text"> Amount to be Paid  :</p>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <p class="card-text"> Last Name :</p>
+                                                </div>
+                                                <div class="animated col-md">
+                                                    <p class="card-text"> {{user.LastName}}</p>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <p class="card-text"> Email :</p>
+                                                </div>
+                                                <div class="animated col-md">
+                                                    <p class="card-text"> {{user.Email}}</p>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <p class="card-text"> Gender :</p>
+                                                </div>
+                                                <div class="animated col-md">
+                                                    <p class="card-text"> {{user.Gender}}</p>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <p class="card-text"> Phone Number:</p>
+                                                </div>
+                                                <div class="animated col-md">
+                                                    <p class="card-text"> {{user.PhoneNumber}}</p>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="row" *ngIf="userDetails.DateOfBirth">
+                                                <div class="col-md-6">
+                                                    <p class="card-text"> Date Of Birth :</p>
+                                                </div>
+                                                <div class="animated col-md">
+                                                    <p class="card-text"> {{userDetails.DateOfBirth}}</p>
+                                                </div>
+                                            </div>
+                                            
+                                                
                                             
 
 
                                         </div>
-                                        <div class="pt-3 text-center">
+                                    </div>
+                                    <div class="card" *ngIf="userDetails.Policy">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Policy Information 
+                                            </h5>
+                                            <br>
+                                            <div class="row" *ngIf="userDetails.Policy.Name">
+                                                <div class="col-md-6">
+                                                    <p class="card-text"> Policy Name :</p>
+                                                </div>
+                                                <div class="animated col-md">
+                                                    <p class="card-text">{{userDetails.Policy.Name}}</p>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="row" *ngIf="userDetails.Policy.Description">
+                                                <div class="col-md-6">
+                                                    <p class="card-text"> Policy Description :</p>
+                                                </div>
+                                                <div class="animated col-md">
+                                                    <p class="card-text">{{userDetails.Policy.Description}}</p>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="row" *ngIf="userDetails.TenureOfPolicy">
+                                                <div class="col-md-6">
+                                                    <p class="card-text"> Tenure Of Policy :</p>
+                                                </div>
+                                                <div class="animated col-md">
+                                                    <p class="card-text">{{userDetails.TenureOfPolicy}}</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="row" *ngIf="userDetails.TenureOfPolicy">
+                                                <div class="col-md-6">
+                                                    <p class="card-text"> Policy Cost :</p>
+                                                </div>
+                                                <div class="animated col-md">
+                                                    <p class="card-text">{{userDetails.Policy.Cost * userDetails.TenureOfPolicy}}</p>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="row" *ngIf="userDetails.Policy.PolicyType">
+                                                <div class="col-md-6">
+                                                    <p class="card-text"> Policy Type :</p>
+                                                </div>
+                                                <div class="animated col-md">
+                                                    <p class="card-text">{{userDetails.Policy.PolicyType}}</p>
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                            
+
+
+                                        </div>
+                                        <div class="pt-3 text-center" *ngIf="userDetails.TenureOfPolicy">
                                             <button type="button" class="btn btn-primary text-center">Proceed to Payment</button>
+                                        </div>
+                                        <div class="pt-3 text-center" *ngIf="!userDetails.TenureOfPolicy">
+                                            <p calss="card-text">*Please Enter The Tenure*</p>
                                         </div>
                                         <br>
                                     </div>
-                                    <div class="card">
+                                    <div class="card" *ngIf="userDetails">
+                                    
                                         <div class="card-body">
                                             <h5 class="card-title">Other Information 
                                             </h5>
                                             <br>
-                                            <p class="card-text"> Aadhar Card Number : </p>
-                                            <p class="card-text"> PAN Card Number : </p>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <p class="card-text"> User Id :</p>
+                                                </div>
+                                                <div class="animated col-md">
+                                                    <p class="card-text"> {{userDetails.UserId}}</p>
+                                                </div>
+                                            </div>
+                                           <div class="row" *ngIf="userDetails.MartialStatus">
+                                                <div class="col-md-6">
+                                                    <p class="card-text"> Martial Status :</p>
+                                                </div>
+                                                <div class="animated col-md">
+                                                    <p class="card-text"> {{userDetails.MartialStatus}}</p>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="row" *ngIf="userDetails.Occupation">
+                                                <div class="col-md-6">
+                                                    <p class="card-text"> Occupation:</p>
+                                                </div>
+                                                <div class="animated col-md">
+                                                    <p class="card-text"> {{userDetails.Occupation}}</p>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="row" *ngIf="userDetails.Salary">
+                                                <div class="col-md-6">
+                                                    <p class="card-text"> Salary :</p>
+                                                </div>
+                                                <div class="animated col-md">
+                                                    <p class="card-text"> {{userDetails.Salary}}</p>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="row" *ngIf="userDetails.AadharNumber">
+                                                <div class="col-md-7">
+                                                    <p class="card-text"> Aadhar Number :</p>
+                                                </div>
+                                                <div class="animated col-md">
+                                                    <p class="card-text"> {{userDetails.AadharNumber}}</p>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="row" *ngIf="userDetails.PanNumber">
+                                                <div class="col-md-7">
+                                                    <p class="card-text"> PAN Number :</p>
+                                                </div>
+                                                <div class="animated col-md">
+                                                    <p class="card-text"> {{userDetails.PanNumber}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row" *ngIf="userDetails.StreetAddressLine1">
+                                                <div class="col-md-7">
+                                                    <p class="card-text"> Street Address Line 1 :</p>
+                                                </div>
+                                                <div class="animated col-md">
+                                                    <p class="card-text"> {{userDetails.StreetAddressLine1}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row" *ngIf="userDetails.StreetAddressLine2">
+                                                <div class="col-md-7">
+                                                    <p class="card-text"> Street Address Line 2 : </p>
+                                                </div>
+                                                <div class="animated col-md">
+                                                    <p class="card-text"> {{userDetails.StreetAddressLine2}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row" *ngIf="userDetails.State">
+                                                <div class="col-md-7">
+                                                    <p class="card-text"> State : </p>
+                                                </div>
+                                                <div class="animated col-md">
+                                                    <p class="card-text"> {{userDetails.State}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row" *ngIf="userDetails.City">
+                                                <div class="col-md-7">
+                                                    <p class="card-text"> City : </p>
+                                                </div>
+                                                <div class="animated col-md">
+                                                    <p class="card-text"> {{userDetails.City}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row" *ngIf="userDetails.ZipCode">
+                                                <div class="col-md-7">
+                                                    <p class="card-text"> ZipCode : </p>
+                                                </div>
+                                                <div class="animated col-md">
+                                                    <p class="card-text"> {{userDetails.ZipCode}}</p>
+                                                </div>
+                                            </div>
                         
                                         </div>
                                     </div>

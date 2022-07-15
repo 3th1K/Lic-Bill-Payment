@@ -8,11 +8,10 @@ namespace LifeInsuranceAPI.Models
 {
     public class ApplicationDbContext : DbContext
     {
+        public ApplicationDbContext() : base("DefaultConnection") { }
         public DbSet<User> Users { get; set; }
         public DbSet<UserDetails> UserDetails { get; set; }
         public DbSet<Employee> Employees { get; set; }
-        public DbSet<Address> Address { get; set; }
         public DbSet<Policy> Policies { get; set; }
-        public DbSet<PolicyType> PolicyTypes { get; set; }
     }
 }

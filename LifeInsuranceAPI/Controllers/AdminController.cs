@@ -38,12 +38,7 @@ namespace LifeInsuranceAPI.Controllers
         [Route("api/admin/get-users")]
         [Authorize(Roles = "admin")]
         public async Task<IHttpActionResult> GetUsers() {
-            var users = await _context.Users
-                                        .Include(u => u.UserDetails)
-                                        .Include(u => u.UserDetails.Address)
-                                        .Include(u => u.UserDetails.Policy)
-                                        .Include(u => u.UserDetails.Policy.PolicyType)
-                                        .ToListAsync();
+            var users = await _context.Users.ToListAsync();
             return Ok(users);
         }
 
@@ -52,12 +47,7 @@ namespace LifeInsuranceAPI.Controllers
         [Authorize(Roles = "admin")]
         public async Task<IHttpActionResult> GetUser(int id)
         {
-            var user = await _context.Users
-                                        .Include(u => u.UserDetails)
-                                        .Include(u => u.UserDetails.Address)
-                                        .Include(u => u.UserDetails.Policy)
-                                        .Include(u => u.UserDetails.Policy.PolicyType)
-                                        .SingleOrDefaultAsync(u => u.Id == id);
+            var user = await _context.Users.SingleOrDefaultAsync(u => u.Id == id);
             if (user == null)
                 return NotFound();
             return Ok(user);
@@ -112,7 +102,7 @@ namespace LifeInsuranceAPI.Controllers
             return Ok("Deleted");
         }
 
-        [HttpGet]
+        /*[HttpGet]
         [Route("api/admin/get-policies")]
         [Authorize(Roles = "admin")]
         public async Task<IHttpActionResult> GetPolicies()
@@ -180,7 +170,7 @@ namespace LifeInsuranceAPI.Controllers
             _context.PolicyTypes.Remove(policyTypeInDb);
             _context.SaveChanges();
             return Ok("Deleted");
-        }
+        }*/
 
 
         /*[HttpGet]

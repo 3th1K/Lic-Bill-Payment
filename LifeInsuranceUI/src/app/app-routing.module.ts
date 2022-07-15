@@ -24,7 +24,7 @@ const routes: Routes = [
   {path:'user-login', component:UserLoginComponent},
   {path:'admin-login', component:AdminLoginComponent},
   {path:'admin-dashboard', component:AdminDashboardComponent, canActivate:[AuthGuard]},
-  {path:'user-dashboard', component:UserDashboardComponent},
+  {path:'user-dashboard', component:UserDashboardComponent, canActivate:[AuthGuard]},
   {path:'get-users', component:GetUsersComponent, canActivate:[AuthGuard]},
   {path:'get-user', component:GetUserComponent, canActivate:[AuthGuard]},
   {path:'edit-user', component:EditUserComponent, canActivate:[AuthGuard]},

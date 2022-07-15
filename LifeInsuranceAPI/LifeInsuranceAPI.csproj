@@ -184,30 +184,28 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202207090620237_CreateUserSideTables.cs" />
-    <Compile Include="Migrations\202207090620237_CreateUserSideTables.designer.cs">
-      <DependentUpon>202207090620237_CreateUserSideTables.cs</DependentUpon>
+    <Compile Include="Migrations\202207150446306_add tables.cs" />
+    <Compile Include="Migrations\202207150446306_add tables.designer.cs">
+      <DependentUpon>202207150446306_add tables.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202207121805318_AddEmployeeTable.cs" />
-    <Compile Include="Migrations\202207121805318_AddEmployeeTable.designer.cs">
-      <DependentUpon>202207121805318_AddEmployeeTable.cs</DependentUpon>
+    <Compile Include="Migrations\202207150506576_update tables.cs" />
+    <Compile Include="Migrations\202207150506576_update tables.designer.cs">
+      <DependentUpon>202207150506576_update tables.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202207131301031_DateTimeToString.cs" />
-    <Compile Include="Migrations\202207131301031_DateTimeToString.designer.cs">
-      <DependentUpon>202207131301031_DateTimeToString.cs</DependentUpon>
+    <Compile Include="Migrations\202207150523243_update tables again.cs" />
+    <Compile Include="Migrations\202207150523243_update tables again.designer.cs">
+      <DependentUpon>202207150523243_update tables again.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202207131737398_address.cs" />
-    <Compile Include="Migrations\202207131737398_address.designer.cs">
-      <DependentUpon>202207131737398_address.cs</DependentUpon>
+    <Compile Include="Migrations\202207150922316_update tables again1.cs" />
+    <Compile Include="Migrations\202207150922316_update tables again1.designer.cs">
+      <DependentUpon>202207150922316_update tables again1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Address.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\JwtHelper.cs" />
     <Compile Include="Models\LoginRequest.cs" />
     <Compile Include="Models\Policy.cs" />
-    <Compile Include="Models\PolicyType.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -264,7 +262,18 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <EmbeddedResource Include="Migrations\202207150446306_add tables.resx">
+      <DependentUpon>202207150446306_add tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207150506576_update tables.resx">
+      <DependentUpon>202207150506576_update tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207150523243_update tables again.resx">
+      <DependentUpon>202207150523243_update tables again.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207150922316_update tables again1.resx">
+      <DependentUpon>202207150922316_update tables again1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -296,18 +305,7 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202207090620237_CreateUserSideTables.resx">
-      <DependentUpon>202207090620237_CreateUserSideTables.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202207121805318_AddEmployeeTable.resx">
-      <DependentUpon>202207121805318_AddEmployeeTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202207131301031_DateTimeToString.resx">
-      <DependentUpon>202207131301031_DateTimeToString.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202207131737398_address.resx">
-      <DependentUpon>202207131737398_address.cs</DependentUpon>
-    </EmbeddedResource>
+    <Folder Include="App_Data\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

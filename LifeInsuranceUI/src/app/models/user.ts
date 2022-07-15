@@ -1,12 +1,9 @@
-import { UserDetails } from "./user-details";
 export class User {
     Id: number;
     FirstName: string;
     LastName: string;
     Email: string;
     Gender: string;
-    PhoneNumber: number;
+    PhoneNumber: string;
     Password: string;
-    UserDetails: UserDetails;
-    UserDetailsId: number;
 }

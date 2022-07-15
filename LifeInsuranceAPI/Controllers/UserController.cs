@@ -46,11 +46,14 @@ namespace LifeInsuranceAPI.Controllers
         }
 
         [HttpGet]
-        [Route("api/user/user-dashboard")]
+        [Route("api/user/get-user/{id}")]
         [Authorize(Roles = "user")]
-        public IHttpActionResult UserDashboard()
+        public async Task<IHttpActionResult> GetUser(int id)
         {
-            return Ok("user logged in");
+            User user = await _context.Users.SingleOrDefaultAsync(u => u.Id == id);
+            if(user==null)
+                return NotFound();
+            return Ok(user);
         }
 
         [HttpGet]
@@ -58,15 +61,74 @@ namespace LifeInsuranceAPI.Controllers
         [Authorize(Roles = "user")]
         public async Task<IHttpActionResult> GetUserDetails(int id)
         {
-            User user = await _context.Users
-                                    .Include(u => u.UserDetails)
-                                    .Include(u => u.UserDetails.Address)
-                                    .Include(u => u.UserDetails.Policy)
-                                    .Include(u => u.UserDetails.Policy.PolicyType)
-                                    .SingleOrDefaultAsync(u => u.Id == id);
-            if(user==null)
+            UserDetails userDetails = await _context.UserDetails
+                .Include(ud=>ud.Policy)
+                .SingleOrDefaultAsync(ud => ud.UserId == id);
+            if (userDetails == null)
                 return NotFound();
-            return Ok(user);
+            return Ok(userDetails);
+        }
+
+        [HttpPut]
+        [Route("api/user/update-user")]
+        [Authorize(Roles = "user")]
+        public async Task<IHttpActionResult> UpdateUser(User user)
+        {
+            if(!ModelState.IsValid)
+                return BadRequest();
+            User userInDb = await _context.Users.SingleOrDefaultAsync(u => u.Id == user.Id);
+            if (userInDb == null)
+                return NotFound();
+            userInDb.FirstName = user.FirstName;
+            userInDb.LastName = user.LastName;
+            userInDb.Email = user.Email;
+            userInDb.Gender = user.Gender;
+            userInDb.PhoneNumber = user.PhoneNumber;
+            _context.SaveChanges();
+            return Ok(userInDb);
+            
+        }
+
+        [HttpPut]
+        [Route("api/user/update-user-details")]
+        [Authorize(Roles = "user")]
+        public async Task<IHttpActionResult> UpdateUserDetails(UserDetails userDetails)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+            UserDetails userDetailsInDb = await _context.UserDetails.Include(ud=>ud.Policy).SingleOrDefaultAsync(ud => ud.UserId == userDetails.UserId);
+            if (userDetailsInDb == null) {
+                _context.UserDetails.Add(userDetails);
+                _context.SaveChanges();
+                return Ok(userDetailsInDb);
+            }
+
+            userDetailsInDb.DateOfBirth = userDetails.DateOfBirth;
+            userDetailsInDb.MartialStatus = userDetails.MartialStatus;
+            userDetailsInDb.Occupation = userDetails.Occupation;
+            userDetailsInDb.Salary = userDetails.Salary;
+            userDetailsInDb.AadharNumber = userDetails.AadharNumber;
+            userDetailsInDb.PanNumber = userDetails.PanNumber;
+            userDetailsInDb.StreetAddressLine1 = userDetails.StreetAddressLine1;
+            userDetailsInDb.StreetAddressLine2 = userDetails.StreetAddressLine2;
+            userDetailsInDb.City = userDetails.City;
+            userDetailsInDb.State = userDetails.State;
+            userDetailsInDb.ZipCode = userDetails.ZipCode;
+            userDetailsInDb.TenureOfPolicy = userDetails.TenureOfPolicy;
+            userDetailsInDb.PolicyId = userDetails.PolicyId;
+
+            _context.SaveChanges();
+            return Ok(userDetailsInDb);
+
+        }
+
+        [HttpGet]
+        [Route("api/user/get-policies")]
+        [Authorize(Roles = "user")]
+        public async Task<IHttpActionResult> GetPolicies()
+        {
+            var policies = await _context.Policies.ToListAsync();
+            return Ok(policies);
         }
 
     }

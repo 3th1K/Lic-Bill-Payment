@@ -7,31 +7,45 @@ namespace LifeInsuranceAPI.Models
     {
         [Key]
         public int Id { get; set; }
-
-        [Required]
-        [Display(Name = "Date Of Birth")]
         public string DateOfBirth { get; set; }
 
-        [Required]
-        [Display(Name = "Martial Status")]
-        public bool MartialStatus { get; set; }
+        public string MartialStatus { get; set; }
 
-        [Required]
         public string Occupation { get; set; }
 
-        [Required]
-        public long Salary { get; set; }
+        
+        public string Salary { get; set; }
 
-        [Required]
-        [Display(Name = "Aadhar Number")]
-        public long AadharNumber { get; set; }
+        
+        
+        public string AadharNumber { get; set; }
 
-        [Required]
-        [Display(Name = "Pan Number")]
+      
         public string PanNumber { get; set; }
-        public Address Address { get; set; }
+
+
+        
+        public string StreetAddressLine1 { get; set; }
+
+        
+        public string StreetAddressLine2 { get; set; }
+
+       
+        public string City { get; set; }
+
+        
+        public string State { get; set; }
+
+        
+        public string ZipCode { get; set; }
+
+        public int TenureOfPolicy { get; set; }
+
+
+        public User User { get; set; }
+        public int UserId { get; set; }
+        
         public Policy Policy { get; set; }
-        public int AddressId { get; set; }
         public int PolicyId { get; set; }
     }
 }

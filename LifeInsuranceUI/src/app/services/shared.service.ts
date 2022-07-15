@@ -18,7 +18,7 @@ export class SharedService {
     const token = this._authService.getToken();
     if(token && !this._jwtHelper.isTokenExpired(token)){
       const tokenData =  this._jwtHelper.decodeToken(token);
-      return { 'Role': tokenData.role, 'Id': tokenData.nameid }
+      return { 'Role': tokenData.role, 'Id': parseInt(tokenData.nameid) }
     }
     return null;
   }
@@ -59,4 +59,25 @@ export class SharedService {
   registerUser(data:any):Observable<any>{
     return this._http.post(this.url+'/user/register',data);
   }
+
+  userGetUser(id:number):Observable<any>{
+    return this._http.get(this.url+'/user/get-user/'+id);
+  }
+
+  userGetUserDetails(id:number):Observable<any>{
+    return this._http.get(this.url+'/user/get-user-details/'+id);
+  }
+
+  userUpdateUser(data:any):Observable<any>{
+    return this._http.put(this.url+'/user/update-user',data);
+  }
+
+  userUpdateUserDetails(data:any):Observable<any>{
+    return this._http.put(this.url+'/user/update-user-details',data);
+  }
+
+  userGetPolicies():Observable<any>{
+    return this._http.get(this.url+'/user/get-policies');
+  }
+
 }

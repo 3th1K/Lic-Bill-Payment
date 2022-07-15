@@ -8,3 +8,47 @@
          display: none;
      }
     }
+
+    .animated {
+        overflow: hidden;
+        width: 11rem;
+        white-space: nowrap;
+      }
+      
+      .animated > * {
+        display: inline-block;
+        position: relative;
+        animation: 3s linear 0s infinite alternate move;
+      }
+      
+      .animated > *.min {
+        min-width: 100%;
+      }
+      
+      @keyframes move {
+        0%,
+        25% {
+          transform: translateX(0%);
+          left: 0%;
+        }
+        75%,
+        100% {
+          transform: translateX(-100%);
+          left: 100%;
+        }
+      }
+      
+      /* Non-solution styles */
+      
+      
+      
+      .animated > * {
+        padding: .1rem 1rem;
+      }
+      .invalid-data{
+        border: 2px solid red;
+    }
+    
+    .valid-data{
+        border: 2px solid green;
+    }

@@ -97,8 +97,8 @@ E:\Cognizant\LIC - Angular\LifeInsuranceAPI\bin\Microsoft.IdentityModel.JsonWebT
 E:\Cognizant\LIC - Angular\LifeInsuranceAPI\bin\Microsoft.IdentityModel.Logging.xml
 E:\Cognizant\LIC - Angular\LifeInsuranceAPI\bin\Microsoft.IdentityModel.Tokens.xml
 E:\Cognizant\LIC - Angular\LifeInsuranceAPI\bin\System.IdentityModel.Tokens.Jwt.xml
-E:\Cognizant\LIC - Angular\LifeInsuranceAPI\obj\Debug\LifeInsuranceAPI.Migrations.CreateUserSideTables.resources
+E:\Cognizant\LIC - Angular\LifeInsuranceAPI\obj\Debug\LifeInsuranceAPI.Migrations.addtables.resources
 E:\Cognizant\LIC - Angular\LifeInsuranceAPI\obj\Debug\LifeInsuranceAPI.csproj.GenerateResource.cache
-E:\Cognizant\LIC - Angular\LifeInsuranceAPI\obj\Debug\LifeInsuranceAPI.Migrations.AddEmployeeTable.resources
-E:\Cognizant\LIC - Angular\LifeInsuranceAPI\obj\Debug\LifeInsuranceAPI.Migrations.DateTimeToString.resources
-E:\Cognizant\LIC - Angular\LifeInsuranceAPI\obj\Debug\LifeInsuranceAPI.Migrations.address.resources
+E:\Cognizant\LIC - Angular\LifeInsuranceAPI\obj\Debug\LifeInsuranceAPI.Migrations.updatetables.resources
+E:\Cognizant\LIC - Angular\LifeInsuranceAPI\obj\Debug\LifeInsuranceAPI.Migrations.updatetablesagain.resources
+E:\Cognizant\LIC - Angular\LifeInsuranceAPI\obj\Debug\LifeInsuranceAPI.Migrations.updatetablesagain1.resources

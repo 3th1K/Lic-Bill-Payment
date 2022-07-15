@@ -1,15 +1,21 @@
-import { Address } from "./address";
 import { Policy } from "./policy";
+import { User } from "./user";
 export class UserDetails {
     Id: number;
     DateOfBirth: string;
-    MartialStatus: boolean;
+    MartialStatus: string;
     Occupation: string;
-    Salary: number;
-    AadharNumber: number;
+    Salary: string;
+    AadharNumber: string;
     PanNumber: string;
-    Address: Address;
+    StreetAddressLine1: string;
+    StreetAddressLine2: string;
+    City: string;
+    State: string;
+    ZipCode: string;
+    TenureOfPolicy: number;
     Policy: Policy;
-    AddressId: number;
     PolicyId: number;
+    User: User;
+    UserId: number;
 }
