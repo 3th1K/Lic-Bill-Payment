@@ -6,6 +6,7 @@
         <a class="navbar-brand" href="#">Jasmine Life Insurace</a>
 
         <div class="navbar-collapse collapse" id="navbarsExample07" >
+            <button *ngIf="this._authService.loggedIn() && this._sharedService.getTokenData()['Role']=='admin'" class="btn btn-sm btn-outline-success ml-5" [routerLink]="['admin-dashboard']">Admin Dashboard</button>
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
                     <a class="nav-link" [routerLink]="['home']">Home</a>

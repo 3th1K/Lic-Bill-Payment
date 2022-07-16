@@ -23,10 +23,10 @@ namespace LifeInsuranceAPI.Models
         public string PhoneNumber { get; set; }
 
         
-        public DateTime DateOfBirth { get; set; }
+        public string DateOfBirth { get; set; }
 
         
-        public bool MartialStatus { get; set; }
+        public string MartialStatus { get; set; }
 
        
         public string AadharNumber { get; set; }

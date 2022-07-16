@@ -22,29 +22,46 @@ export class SharedService {
     }
     return null;
   }
+ 
+  //admin
 
-
-  getUsers():Observable<any>{
+  adminGetUsers():Observable<any>{
     return this._http.get(this.url+'/admin/get-users');
   }
 
-  getUser(id: number):Observable<any>{
+  adminGetUser(id: number):Observable<any>{
     return this._http.get(this.url+'/admin/get-user/'+id);
   }
 
-  deleteUser(id:number):Observable<any>{
+  adminGetUserDetails(id: number):Observable<any>{
+    return this._http.get(this.url+'/admin/get-user-details/'+id);
+  }
+
+  adminUpdateUser(data:any):Observable<any>{
+    return this._http.put(this.url+'/admin/update-user',data);
+  }
+
+  adminUpdateUserDetails(data:any):Observable<any>{
+    return this._http.put(this.url+'/admin/update-user-details',data);
+  }
+
+  adminDeleteUser(id:number):Observable<any>{
     return this._http.delete(this.url+'/admin/delete-user/'+id);
+  }
+
+  adminGetPolicies():Observable<any>{
+    return this._http.get(this.url+'/admin/get-policies');
   }
 
   createEmployee(data:any):Observable<any>{
     return this._http.post(this.url+'/admin/create-employee',data);
   }
 
-  getEmployees():Observable<any>{
+  adminGetEmployees():Observable<any>{
     return this._http.get(this.url+'/admin/get-employees');
   }
 
-  getEmployee(id: number):Observable<any>{
+  adminGetEmployee(id: number):Observable<any>{
     return this._http.get(this.url+'/admin/get-employee/'+id);
   }
 
@@ -52,9 +69,11 @@ export class SharedService {
     return this._http.put(this.url+'/admin/update-employee/'+id, data);
   }
 
-  deleteEmployee(id:number):Observable<any>{
+  adminDeleteEmployee(id:number):Observable<any>{
     return this._http.delete(this.url+'/admin/delete-employee/'+id);
   }
+
+  //user
 
   registerUser(data:any):Observable<any>{
     return this._http.post(this.url+'/user/register',data);

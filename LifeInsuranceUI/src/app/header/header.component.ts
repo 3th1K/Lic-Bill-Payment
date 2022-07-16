@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
+import { SharedService } from '../services/shared.service';
 
 @Component({
   selector: 'app-header',
@@ -9,8 +10,9 @@ import { AuthenticationService } from '../services/authentication.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public _authService:AuthenticationService, private _router:Router) { }
-  isLoggedIn:boolean = this._authService.loggedIn();
+  constructor(public _authService:AuthenticationService, private _router:Router, public _sharedService:SharedService) { }
+  
+  
 
   ngOnInit(): void {
   }

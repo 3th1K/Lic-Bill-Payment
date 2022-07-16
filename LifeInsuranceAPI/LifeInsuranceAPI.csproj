@@ -200,6 +200,10 @@
     <Compile Include="Migrations\202207150922316_update tables again1.designer.cs">
       <DependentUpon>202207150922316_update tables again1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202207161939053_smol update.cs" />
+    <Compile Include="Migrations\202207161939053_smol update.designer.cs">
+      <DependentUpon>202207161939053_smol update.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Employee.cs" />
@@ -273,6 +277,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202207150922316_update tables again1.resx">
       <DependentUpon>202207150922316_update tables again1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207161939053_smol update.resx">
+      <DependentUpon>202207161939053_smol update.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -6,7 +6,7 @@ export class Employee {
     Gender: string;
     PhoneNumber: number;
     DateOfBirth: string;
-    MartialStatus: boolean;
+    MartialStatus: string;
     AadharNumber: number;
     Address: string;
     Password: string;

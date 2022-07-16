@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
+import { SharedService } from '../services/shared.service';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -10,17 +11,13 @@ import { AuthenticationService } from '../services/authentication.service';
 })
 export class AdminDashboardComponent implements OnInit {
 
-  constructor(private _authService:AuthenticationService, private _router:Router) { }
-
+  constructor(private _sharedService:SharedService, private _router:Router) { }
+  role = this._sharedService.getTokenData()['Role'];
   ngOnInit(): void {
-    this._authService.adminDashboard().subscribe({
-      next : (res:any) => console.log(res),
-      error: (err:HttpErrorResponse) => {
-        console.log(err);
-        alert("You are not Authorized !");
-        this._router.navigate(['admin-login']);
-      }
-    })
+    if(this.role != "admin"){
+      alert("You are not Authorized !");
+      this._router.navigate(['admin-login']);
+    }
   }
 
 } 

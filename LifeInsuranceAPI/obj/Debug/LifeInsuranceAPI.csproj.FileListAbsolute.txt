@@ -102,3 +102,4 @@ E:\Cognizant\LIC - Angular\LifeInsuranceAPI\obj\Debug\LifeInsuranceAPI.csproj.Ge
 E:\Cognizant\LIC - Angular\LifeInsuranceAPI\obj\Debug\LifeInsuranceAPI.Migrations.updatetables.resources
 E:\Cognizant\LIC - Angular\LifeInsuranceAPI\obj\Debug\LifeInsuranceAPI.Migrations.updatetablesagain.resources
 E:\Cognizant\LIC - Angular\LifeInsuranceAPI\obj\Debug\LifeInsuranceAPI.Migrations.updatetablesagain1.resources
+E:\Cognizant\LIC - Angular\LifeInsuranceAPI\obj\Debug\LifeInsuranceAPI.Migrations.smolupdate.resources

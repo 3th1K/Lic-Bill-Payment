@@ -8,7 +8,7 @@
       <div class="col-md-9">
         <div class="py-5">
           <h4 class="display-4">User Details</h4><hr>
-          <div class="row mt-5">
+          <div class="row mt-5 ml-5">
             <div class="col-sm-3">
               <label class="labels">Full Name</label>
             </div>
@@ -16,9 +16,8 @@
                 {{user.FirstName+" "+user.LastName}}
             </div>
           </div>
-          <br>
-
-          <div class="row">
+          
+          <div class="row ml-5">
             <div class="col-sm-3">
               <label class="labels">Email</label>
             </div>
@@ -26,9 +25,8 @@
                 {{user.Email}}
             </div>
           </div>
-          <br>
-
-          <div class="row">
+          
+          <div class="row ml-5">
             <div class="col-sm-3">
               <label class="labels">Gender</label>
             </div>
@@ -36,9 +34,8 @@
                 {{user.Gender}}
             </div>
           </div>
-          <br>
-
-          <div class="row">
+          
+          <div class="row ml-5">
             <div class="col-sm-3">
               <label class="labels">Phone Number</label>
             </div>
@@ -46,111 +43,160 @@
                 {{user.PhoneNumber}}
             </div>
           </div>
-          <br>
+          
+          <div *ngIf="!userDetails.UserId">
+            <h1 class="display-6">User Has Not Updated Their Profile Yet!!</h1>
+          </div>
+          <div *ngIf="userDetails.UserId">
+            <div class="row ml-5" *ngIf="userDetails.DateOfBirth">
+              <div class="col-sm-3">
+                <label class="labels">Date Of Birth</label>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                  {{userDetails.DateOfBirth}}
+              </div>
+            </div>
+            
+            <div class="row ml-5" *ngIf="userDetails.MartialStatus">
+              <div class="col-sm-3">
+                <label class="labels">Martial Status</label>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                  {{userDetails.MartialStatus}}
+              </div>
+            </div>
+            
 
-          <!--<div class="row">
-            <div class="col-sm-3">
-              <label class="labels">Date Of Birth</label>
+            <div class="row ml-5" *ngIf="userDetails.Occupation">
+              <div class="col-sm-3">
+                <label class="labels">Occupation</label>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                  {{userDetails.Occupation}}
+              </div>
             </div>
-            <div class="col-sm-9 text-secondary">
-                {{user.UserDetails.DateOfBirth}}
+            
+            <div class="row ml-5" *ngIf="userDetails.Salary">
+              <div class="col-sm-3">
+                <label class="labels">Salary</label>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                  {{userDetails.Salary}}
+              </div>
             </div>
-          </div>
-          <br>
+            
 
-          <div class="row">
-            <div class="col-sm-3">
-              <label class="labels">Martial Status</label>
+            <div class="row ml-5" *ngIf="userDetails.AadharNumber" >
+              <div class="col-sm-3">
+                <label class="labels">Aadhar Number</label>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                  {{userDetails.AadharNumber}}
+              </div>
             </div>
-            <div class="col-sm-9 text-secondary">
-                {{user.UserDetails.MartialStatus}}
-            </div>
-          </div>
-          <br>
+            
 
-          <div class="row">
-            <div class="col-sm-3">
-              <label class="labels">Occupation</label>
+            <div class="row ml-5" *ngIf="userDetails.PanNumber">
+              <div class="col-sm-3">
+                <label class="labels">Pan Number</label>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                  {{userDetails.PanNumber}}
+              </div>
             </div>
-            <div class="col-sm-9 text-secondary">
-                {{user.UserDetails.Occupation}}
+            
+            <div class="row ml-5" *ngIf="userDetails.StreetAddressLine1 ">
+              <div class="col-sm-3">
+                <label class="labels">Address Line 1</label>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{userDetails.StreetAddressLine1}}
+              </div>
             </div>
-          </div>
-          <br>
-          <div class="row">
-            <div class="col-sm-3">
-              <label class="labels">Salary</label>
+            
+            <div class="row ml-5" *ngIf="userDetails.StreetAddressLine2 ">
+              <div class="col-sm-3">
+                <label class="labels">Address Line 2</label>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{userDetails.StreetAddressLine2}}
+              </div>
             </div>
-            <div class="col-sm-9 text-secondary">
-                {{user.UserDetails.Salary}}
+            
+            <div class="row ml-5" *ngIf="userDetails.ZipCode">
+              <div class="col-sm-3">
+                <label class="labels">Zip Code</label>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{userDetails.ZipCode}}
+              </div>
             </div>
-          </div>
-          <br>
+            
+            <div class="row ml-5" *ngIf="userDetails.City">
+              <div class="col-sm-3">
+                <label class="labels">City</label>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{userDetails.City}}
+              </div>
+            </div>
+            
+            <div class="row ml-5" *ngIf="userDetails.State">
+              <div class="col-sm-3">
+                <label class="labels">State</label>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{userDetails.State}}
+              </div>
+            </div>
+            
+            <div class="row ml-5" *ngIf="userDetails.Policy.Name">
+              <div class="col-sm-3">
+                <label class="labels">Policy Name</label>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{userDetails.Policy.Name}}
+              </div>
+            </div>
+            
+            <div class="row ml-5" *ngIf="userDetails.Policy.PolicyType">
+              <div class="col-sm-3">
+                <label class="labels">Policy Type</label>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{userDetails.Policy.PolicyType}}
+              </div>
+            </div>
+            
+            <div class="row ml-5" *ngIf="userDetails.TenureOfPolicy">
+              <div class="col-sm-3">
+                <label class="labels">Tenure Of Policy</label>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{userDetails.TenureOfPolicy}}
+              </div>
+            </div>
 
-          <div class="row">
-            <div class="col-sm-3">
-              <label class="labels">Aadhar Number</label>
+            <div class="row ml-5" *ngIf="userDetails.TenureOfPolicy && userDetails.Policy.Id">
+              <div class="col-sm-3">
+                <label class="labels">Total Policy Cost</label>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{userDetails.Policy.Cost * userDetails.TenureOfPolicy}}
+              </div>
             </div>
-            <div class="col-sm-9 text-secondary">
-                {{user.UserDetails.AadharNumber}}
             </div>
-          </div>
-          <br>
-
-          <div class="row">
-            <div class="col-sm-3">
-              <label class="labels">Pan Number</label>
-            </div>
-            <div class="col-sm-9 text-secondary">
-                {{user.UserDetails.PanNumber}}
-            </div>
-          </div>
-          <br>
-          <div class="row">
-            <div class="col-sm-3">
-              <label class="labels">Address</label>
-            </div>
-            <div class="col-sm-9 text-secondary">
-              {{user.UserDetails.Address.StreetAddressLine1}}
-              {{user.UserDetails.Address.StreetAddressLine1}}
-              {{user.UserDetails.Address.ZipCode}}
-            </div>
-          </div>
-          <br>
-
-          <div class="row">
-            <div class="col-sm-3">
-              <label class="labels">City</label>
-            </div>
-            <div class="col-sm-9 text-secondary">
-              {{user.UserDetails.Address.City}}
-            </div>
-          </div>
-          <br>
-
-          <div class="row">
-            <div class="col-sm-3">
-              <label class="labels">State</label>
-            </div>
-            <div class="col-sm-9 text-secondary">
-              {{user.UserDetails.Address.State}}
-            </div>
-          </div>
-          <br>
-
-          <div class="row">
-            <div class="col-sm-3">
-              <label class="labels">Policy</label>
-            </div>
-            <div class="col-sm-9 text-secondary">
-              {{user.UserDetails.Policy.Name}}
-            </div>
-          </div>-->
             
             <div class="mt-5">
-              <button class="btn btn-primary" [routerLink]="['../edit-user']" [queryParams]="{id:user.Id}">
+              <button class="btn btn-lg btn-primary mr-5" [routerLink]="['../edit-user']" [queryParams]="{id:user.Id}">
               <i class="bi bi-pencil"></i>
                 Edit
+              </button>
+            </div>
+            <div class="mt-5">
+              <button class="btn btn-lg btn-outline-secondary mr-5" [routerLink]="['../get-users']">
+              <i class="bi bi-arrow-return-left"></i>
+                Back To User List
               </button>
             </div>
             

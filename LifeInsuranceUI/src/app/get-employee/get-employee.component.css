@@ -1,0 +1,12 @@
+div{
+    border-radius: 50px;
+}
+.card{
+    border: 2px solid black;
+}
+.cprofile{
+    background-color:crimson;
+}
+.cbody{
+    background-color:gainsboro;
+}

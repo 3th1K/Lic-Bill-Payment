@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthenticationService } from '../services/authentication.service';
 import { SharedService } from '../services/shared.service';
 import { Router } from '@angular/router';
 import { User } from '../models/user';
@@ -15,8 +14,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class UserDashboardComponent implements OnInit {
 
-  constructor(private _sharedService:SharedService, 
-              private _authService:AuthenticationService,
+  constructor(private _sharedService:SharedService,
               private _router:Router
               ) { }
 
@@ -65,7 +63,7 @@ export class UserDashboardComponent implements OnInit {
       this._router.navigate(['user-login']);
     }
   }
-
+ 
   GetUser(){
     this._sharedService.userGetUser(this.td['Id']).subscribe(data=>{      
       this.user = data;

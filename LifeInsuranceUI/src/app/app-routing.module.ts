@@ -18,6 +18,7 @@ import { EmployeeDashboardComponent } from './employee-dashboard/employee-dashbo
 import { ApplyEmployeeComponent } from './apply-employee/apply-employee.component';
 import { PaymentPageComponent } from './payment-page/payment-page.component';
 import { FinalPageComponent } from './final-page/final-page.component';
+import { GetEmployeeComponent } from './get-employee/get-employee.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'home'},
@@ -36,6 +37,7 @@ const routes: Routes = [
   {path:'get-users', component:GetUsersComponent, canActivate:[AuthGuard]},
   {path:'get-user', component:GetUserComponent, canActivate:[AuthGuard]},
   {path:'edit-user', component:EditUserComponent, canActivate:[AuthGuard]},
+  {path:'get-employee', component:GetEmployeeComponent, canActivate:[AuthGuard]},
   {path:'get-employees', component:GetEmployeesComponent, canActivate:[AuthGuard]}
 ];
 

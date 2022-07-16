@@ -34,7 +34,7 @@ export class EditEmployeeComponent implements OnInit {
   ngOnInit(): void {
     this.id = this._route.snapshot.queryParamMap.get('id');
     if(this.id!=null){
-      this._sharedService.getEmployee(this.id).subscribe((res)=>{
+      this._sharedService.adminGetEmployee(this.id).subscribe((res)=>{
         this.employeeForm.patchValue({
           FirstName: res.FirstName,
           LastName: res.LastName,

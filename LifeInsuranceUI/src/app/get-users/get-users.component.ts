@@ -15,18 +15,23 @@ export class GetUsersComponent implements OnInit {
 
   users:User[] = [];
   dataLoaded:boolean = false;
+  role = this._sharedService.getTokenData()['Role'];
   
   ngOnInit(): void {
+    if(this.role != "admin"){
+      alert("You are not Authorized !");
+      this._router.navigate(['admin-login']);
+    }
     this.initializeUsers();
   }
 
   removeUser(id:number){
-    this._sharedService.deleteUser(id).subscribe(data =>{this.initializeUsers(); console.log(data)});
+    this._sharedService.adminDeleteUser(id).subscribe(data =>{this.initializeUsers(); console.log(data)});
   }
   
   initializeUsers(){
     this.dataLoaded = false;
-    this._sharedService.getUsers().subscribe({
+    this._sharedService.adminGetUsers().subscribe({
       next : (data:any)=>{
         if(data)
           this.dataLoaded = true;
@@ -34,8 +39,8 @@ export class GetUsersComponent implements OnInit {
       },
       error: (err:HttpErrorResponse) => {
         console.log(err);
-        alert("You are not Authorized !");
-        this._router.navigate(['admin-login']);
+        alert("OOPS, Something Went Wrong!");
+        this._router.navigate(['admin-dashboard']);
       }
     });
   }

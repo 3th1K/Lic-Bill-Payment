@@ -11,21 +11,27 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class GetEmployeesComponent implements OnInit {
 
-  constructor(private _sharedService:SharedService, private _router:Router) { }
+  constructor(private _sharedService: SharedService, private _router: Router) { }
+
   employees:Employee[] = [];
   dataLoaded:boolean = false;
+  role = this._sharedService.getTokenData()['Role'];
   
   ngOnInit(): void {
+    if(this.role != "admin"){
+      alert("You are not Authorized !");
+      this._router.navigate(['admin-login']);
+    }
     this.initializeEmployees();
   }
 
   removeEmployee(id:number){
-    this._sharedService.deleteEmployee(id).subscribe(data=>{this.initializeEmployees();console.log(data)});
+    this._sharedService.adminDeleteEmployee(id).subscribe(data =>{this.initializeEmployees(); console.log(data)});
   }
   
   initializeEmployees(){
     this.dataLoaded = false;
-    this._sharedService.getEmployees().subscribe({
+    this._sharedService.adminGetEmployees().subscribe({
       next : (data:any)=>{
         if(data)
           this.dataLoaded = true;
@@ -33,8 +39,8 @@ export class GetEmployeesComponent implements OnInit {
       },
       error: (err:HttpErrorResponse) => {
         console.log(err);
-        alert("You are not Authorized !");
-        this._router.navigate(['admin-login']);
+        alert("OOPS, Something Went Wrong!");
+        this._router.navigate(['admin-dashboard']);
       }
     });
   }

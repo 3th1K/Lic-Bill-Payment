@@ -4,10 +4,15 @@
             <span class="sr-only" id="loading"></span>
         </div>
     </div>
-    <h1 *ngIf="dataLoaded && employees.length" class="display-1">Employees</h1>
+    
     <div class="jumbotron" *ngIf="dataLoaded && !employees.length">
         <h1  class="display-4">No Employees</h1>
-        <button class="btn btn-primary" [routerLink]="['../edit-employee']">New Employee</button>
+        <button class="btn btn-primary" [routerLink]="['']">Review Employee Applications</button>
+    </div>
+    <div *ngIf="dataLoaded && employees.length">
+        <h1  class="display-1">Employees</h1>
+        <br>
+        <button class="btn btn-primary" [routerLink]="['../']">Employee Applications</button>
     </div>
     <hr>
     <table *ngIf="dataLoaded && employees.length" class="table table-hover table-borderless">
