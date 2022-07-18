@@ -178,7 +178,7 @@ namespace LifeInsuranceAPI.Controllers
         }
 
         [HttpPost]
-        [Route("api/admin/add-employee/{id}")]
+        [Route("api/admin/add-employee")]
         [Authorize(Roles = "admin")]
         public IHttpActionResult AddEmployee(Employee employee) {
             if (!ModelState.IsValid)
@@ -213,25 +213,46 @@ namespace LifeInsuranceAPI.Controllers
 
         }
 
-        /*[HttpGet]
-        [Route("api/admin/get-policies")]
+        [HttpGet]
+        [Route("api/admin/get-applications")]
         [Authorize(Roles = "admin")]
-        public async Task<IHttpActionResult> GetPolicies()
+        public async Task<IHttpActionResult> GetApplications()
         {
-            var policies = await _context.Policies
-                                        .Include(p => p.PolicyType)
-                                        .ToListAsync();
-            return Ok(policies);
+            var applications = await _context.EmployeeApplications.ToListAsync();
+            return Ok(applications);
         }
+
+        [HttpGet]
+        [Route("api/admin/get-application/{id}")]
+        [Authorize(Roles = "admin")]
+        public async Task<IHttpActionResult> GetApplication(int id)
+        {
+            var application = await _context.EmployeeApplications.SingleOrDefaultAsync(a => a.Id == id);
+            if (application == null)
+                return NotFound();
+            return Ok(application);
+        }
+
+        [HttpDelete]
+        [Route("api/admin/delete-application/{id}")]
+        [Authorize(Roles = "admin")]
+        public async Task<IHttpActionResult> DeleteApplication(int id)
+        {
+            EmployeeApplication applicationInDb = await _context.EmployeeApplications.SingleOrDefaultAsync(a => a.Id == id);
+            if (applicationInDb == null)
+                return NotFound();
+            _context.EmployeeApplications.Remove(applicationInDb);
+            _context.SaveChanges();
+            return Ok("Application Removed");
+        }
+
 
         [HttpGet]
         [Route("api/admin/get-policy/{id}")]
         [Authorize(Roles = "admin")]
         public async Task<IHttpActionResult> GetPolicy(int id)
         {
-            var policy = await _context.Policies
-                                        .Include(p => p.PolicyType)
-                                        .SingleOrDefaultAsync(p => p.Id == id);
+            var policy = await _context.Policies.SingleOrDefaultAsync(p => p.Id == id);
             if (policy == null)
                 return NotFound();
             return Ok(policy);
@@ -242,54 +263,43 @@ namespace LifeInsuranceAPI.Controllers
         [Authorize(Roles = "admin")]
         public async Task<IHttpActionResult> DeletePolicy(int id)
         {
-            Policy policyInDb = await _context.Policies.SingleOrDefaultAsync(p => p.Id == id);
+            Policy policy = await _context.Policies.SingleOrDefaultAsync(p => p.Id == id);
+            if (policy == null)
+                return NotFound();
+            _context.Policies.Remove(policy);
+            _context.SaveChanges();
+            return Ok("Policy Removed");
+        }
+
+        [HttpPost]
+        [Route("api/admin/add-policy")]
+        [Authorize(Roles = "admin")]
+        public IHttpActionResult AddPolicy(Policy policy)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            _context.Policies.Add(policy);
+            _context.SaveChanges();
+            return Ok(policy);
+        }
+
+        [HttpPut]
+        [Route("api/admin/update-policy")]
+        [Authorize(Roles = "admin")]
+        public async Task<IHttpActionResult> UpdatePolicy(Policy policy)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+            Policy policyInDb = await _context.Policies.SingleOrDefaultAsync(p => p.Id == policy.Id);
             if (policyInDb == null)
                 return NotFound();
-            _context.Policies.Remove(policyInDb);
+            policyInDb.Name = policy.Name;
+            policyInDb.Description = policy.Description;
+            policyInDb.Cost = policy.Cost;
+            policyInDb.PolicyType = policy.PolicyType;
             _context.SaveChanges();
-            return Ok("Deleted");
+            return Ok(policyInDb);
+
         }
-
-        [HttpGet]
-        [Route("api/admin/get-policy-types")]
-        [Authorize(Roles = "admin")]
-        public async Task<IHttpActionResult> GetPolicyTypes()
-        {
-            var policyTypes = await _context.PolicyTypes.ToListAsync();
-            return Ok(policyTypes);
-        }
-
-        [HttpGet]
-        [Route("api/admin/get-policy-type/{id}")]
-        [Authorize(Roles = "admin")]
-        public async Task<IHttpActionResult> GetPolicyType(int id)
-        {
-            var policyType = await _context.PolicyTypes.SingleOrDefaultAsync(p => p.Id == id);
-            if (policyType == null)
-                return NotFound();
-            return Ok(policyType);
-        }
-
-        [HttpDelete]
-        [Route("api/admin/delete-policy-types/{id}")]
-        [Authorize(Roles = "admin")]
-        public async Task<IHttpActionResult> DeletePolicyTypes(int id)
-        {
-            PolicyType policyTypeInDb = await _context.PolicyTypes.SingleOrDefaultAsync(pt => pt.Id == id);
-            if (policyTypeInDb == null)
-                return NotFound();
-            _context.PolicyTypes.Remove(policyTypeInDb);
-            _context.SaveChanges();
-            return Ok("Deleted");
-        }*/
-
-
-        /*[HttpGet]
-        [Route("api/admin/superadmin-home")]
-        [Authorize(Roles = "superadmin")]
-        public IHttpActionResult SuperadminHome()
-        {
-            return Ok("Super Admin Home");
-        }*/
     }
 }

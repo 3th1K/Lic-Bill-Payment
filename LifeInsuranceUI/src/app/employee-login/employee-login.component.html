@@ -1,0 +1,43 @@
+<section class="lic-content">
+    <div class="container">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="card text-black">
+                <div class="card-body p-md-5">
+                    <div class="row justify-content-center">
+                        <div *ngIf="!logginIn" class="col-md-9 col-lg-6 col-xl-5">
+                            <img src="../../assets/images/user-login-page-img.webp" class="img-fluid">
+                        </div>
+                        <div class="jumbotron" *ngIf="logginIn">
+                            <div class="spinner-border m-5" role="status" >
+                                <span class="sr-only" id="loading"></span>
+                            </div>
+                            <h1 class="display-5">Logging In</h1>
+                        </div>
+                        <div *ngIf="!logginIn" class="col-md-10 col-xl-5" >
+                            <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Login</p>
+
+                            <form class="mx-1 mx-md-4" [formGroup]="employeeLoginForm" #f="ngForm">
+                                <!-- Email input -->
+                                <div class="d-flex flex-row align-items-center mb-4">
+                                    <input type="email" id="email" class="form-control form-control-lg" placeholder="Enter a valid email address" formControlName="EmailAddress" [ngClass]="{'invalid-data':f.submitted && employeeLoginForm.controls.EmailAddress.errors}"/>
+                                </div>
+                     
+                                <!-- Password input -->
+                                <div class="d-flex flex-row align-items-center mb-4">
+                                    <input type="password" id="password" class="form-control form-control-lg" placeholder="Enter password" formControlName="Password" [ngClass]="{'invalid-data':f.submitted && employeeLoginForm.controls.Password.errors}"/>
+                                </div>
+                    
+                    
+                                <div class="text-center text-lg-start mt-4 pt-2 d-flex justify-content-center">
+                                    <button type="submit" class="btn btn-primary btn-lg " style="padding-left: 2.5rem; padding-right: 2.5rem;" (click)="doLogin()">Login</button>
+                                </div>
+                                <p class="small fw-bold mt-2 pt-1 mb-0">Not An Employee? <a [routerLink]="['../apply-employee']" class="link-danger">Apply For Job</a></p>
+                    
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

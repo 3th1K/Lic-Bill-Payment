@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { CustomValidators } from '../models/custom-validators';
 import { SharedService } from '../services/shared.service';
 import { Router } from '@angular/router';
 
@@ -26,8 +25,10 @@ export class UserRegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  retypedPass:string;
+
   registerUser(){
-    if(this.userRegistrationForm.valid){
+    if(this.userRegistrationForm.valid && this.retypedPass==this.userRegistrationForm.controls.Password.value){
       this._sharedService.registerUser(this.userRegistrationForm.value).subscribe(()=>{
         console.log("created");
         this.userRegistrationForm.reset();
@@ -36,8 +37,6 @@ export class UserRegisterComponent implements OnInit {
     }
     else{
       console.log("not created");
-      alert("Something Went Worng");
-      this._router.navigate(['/home']);
     }
   }
 

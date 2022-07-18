@@ -1,40 +1,13 @@
-<div>
-    <div class="jumbotron">
-        <h1  class="display-1">Employees</h1>
+<div class="jumbotron" *ngIf="!dataLoaded">
+    <div class="spinner-border m-5" role="status" *ngIf="!dataLoaded">
+        <span class="sr-only" id="loading"></span>
     </div>
-    
-    <hr>
-    <table class="table table-hover table-borderless">
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Phone Number</th>
-            <th scope="col">Email</th>
-            <th scope="col">Gender</th>
-            <th scope="col">Edit</th>
-            <th scope="col">Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-            <tr >
-                <td>Name</td>
-                <td>PhoneNumber</td>
-                <td>.Email</td>
-                <td>Gender</td>
-                <td> 
-                    <button class="btn btn-primary">
-                    <i class="bi bi-pencil"></i>
-                    Edit
-                    </button>
-                </td>
-                <td>
-                    <button class="btn btn-danger" >
-                        <i class="fa fa-trash" aria-hidden="true"></i>
-                        Delete
-                    </button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+</div>
+<div *ngIf="dataLoaded">
+    <div class="jumbotron">
+        <h1  class="display-1">Employee Dashboard</h1>
+        <hr>
+        <h1  class="display-6">Hi I Am {{employee.FirstName+" "+employee.LastName}}</h1>
+    </div>
 </div>
 

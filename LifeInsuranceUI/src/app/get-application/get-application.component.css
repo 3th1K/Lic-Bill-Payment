@@ -1,0 +1,19 @@
+div{
+    border-radius: 50px;
+}
+.card{
+    border: 2px solid black;
+}
+.cprofile{
+    background-color:blanchedalmond;
+}
+.cbody{
+    background-color:gainsboro;
+}
+.invalid-data{
+    border: 2px solid red;
+}
+
+.valid-data{
+    border: 2px solid green;
+}

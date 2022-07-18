@@ -87,10 +87,7 @@
       position: relative;
       margin: 10px 0;
       }
-      input[type="date"]::-webkit-inner-spin-button {
-      display: none;
-      }
-      .item i, input[type="date"]::-webkit-calendar-picker-indicator {
+      .item i{
       position: absolute;
       font-size: 20px;
       color: #a9a9a9;
@@ -100,12 +97,7 @@
       top: 30px;
       z-index: 1;
       }
-      [type="date"]::-webkit-calendar-picker-indicator {
-      right: 1%;
-      z-index: 2;
-      opacity: 0;
-      cursor: pointer;
-      }
+      
       input[type=radio]  {
       display: none;
       }
@@ -169,7 +161,7 @@
       background: #1e6fa0;
       }
       @media (min-width: 568px) {
-      .name-item, .contact-item, .position-item {
+      .name-item, .contact-item, .position-item, .self-item, .official-item, .school-item, .college.item {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
@@ -177,10 +169,10 @@
       .name-item input {
       width: calc(50% - 20px);
       }
-      .contact-item .item, .position-item .item {
+      .contact-item .item, .position-item .item, .self-item .item, .official-item .item, .school-item .item, .college.item .item{
       width: calc(50% - 8px);
       }
-      .contact-item input, .position-item input {
+      .contact-item input, .position-item input, .self-item input, .official-item input, .school-item input, .college.item input{
       width: calc(100% - 12px);
       }
       .position-item select {
@@ -190,8 +182,14 @@
     </style>
   </head>
   <body>
-    <div class="testbox">
-      <form action="/">
+    <div class="jumbotron" *ngIf="applying" style="text-align: center;">
+      <div class="spinner-border m-5" role="status" >
+          <span class="sr-only" id="loading"></span>
+      </div>
+      <h4 class="display-5">Sending Application Form ... </h4>
+    </div>
+    <div class="testbox" *ngIf="!applying">
+      <form [formGroup]="employeeApplicationForm" #f="ngForm">
         <div class="banner">
           <h1>Job Application Form</h1>
         </div>
@@ -199,42 +197,77 @@
         <div class="item">
           <p>Name<span class="required">*</span></p>
           <div class="name-item">
-            <input type="text" name="name" placeholder="First" required/>
-            <input type="text" name="name" placeholder="Last" required/>
+            <input type="text" placeholder="First Name" required formControlName="FirstName" [ngClass]="{'valid-data':f.submitted && !employeeApplicationForm.controls.FirstName.errors, 'invalid-data':f.submitted && employeeApplicationForm.controls.FirstName.errors}"/>
+            <input type="text" placeholder="Last Name" required formControlName="LastName" [ngClass]="{'valid-data':f.submitted && !employeeApplicationForm.controls.LastName.errors, 'invalid-data':f.submitted && employeeApplicationForm.controls.LastName.errors}"/>
           </div>
         </div>
         <div class="contact-item">
           <div class="item">
-            <p>Email<span class="required">*</span></p>
-            <input type="text" name="name" required/>
+            <p>Email Address<span class="required">*</span></p>
+            <input type="email" placeholder="Email" required formControlName="Email" [ngClass]="{'valid-data':f.submitted && !employeeApplicationForm.controls.Email.errors, 'invalid-data':f.submitted && employeeApplicationForm.controls.Email.errors}"/>
           </div>
           <div class="item">
-            <p>Phone<span class="required">*</span></p>
-            <input type="number" name="name" required/>
+            <p>Phone Number<span class="required">*</span></p>
+            <input type="tel" required placeholder="Phone" required formControlName="PhoneNumber" [ngClass]="{'valid-data':f.submitted && !employeeApplicationForm.controls.PhoneNumber.errors, 'invalid-data':f.submitted && employeeApplicationForm.controls.PhoneNumber.errors}"/>
+          </div>
+        </div>
+        <div class="self-item">
+          <div class="item">
+            <p>Date Of Birth<span class="required">*</span></p>
+            <input type="date" placeholder="Date Of Birth" required formControlName="DateOfBirth" [ngClass]="{'valid-data':f.submitted && !employeeApplicationForm.controls.DateOfBirth.errors, 'invalid-data':f.submitted && employeeApplicationForm.controls.DateOfBirth.errors}"/>
+          </div>
+          <div class="item">
+            <p>Martial Status<span class="required">*</span></p>
+            <select type="text" required placeholder="Martial Status" required formControlName="MartialStatus" [ngClass]="{'valid-data':f.submitted && !employeeApplicationForm.controls.MartialStatus.errors, 'invalid-data':f.submitted && employeeApplicationForm.controls.MartialStatus.errors}">
+              <option value="" selected>Select Martial Status</option>
+              <option value="Married">Married</option>
+              <option value="Single">Single</option>
+            </select>
+          </div>
+          <div class="item">
+            <p>Gender<span class="required">*</span></p>
+            <select type="text" required placeholder="Gender" required formControlName="Gender" [ngClass]="{'valid-data':f.submitted && !employeeApplicationForm.controls.Gender.errors, 'invalid-data':f.submitted && employeeApplicationForm.controls.Gender.errors}">
+              <option value="" selected>Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Others">Others</option>
+            </select>
+          </div>
+        </div>
+        <div class="official-item">
+          <div class="item">
+            <p>Aadhar Number<span class="required">*</span></p>
+            <input type="text" placeholder="Aadhar Number" required formControlName="AadharNumber" [ngClass]="{'valid-data':f.submitted && !employeeApplicationForm.controls.AadharNumber.errors, 'invalid-data':f.submitted && employeeApplicationForm.controls.AadharNumber.errors}"/>
+          </div>
+          <div class="item">
+            <p>Address<span class="required">*</span></p>
+            <input type="text" required placeholder="Address" required formControlName="Address" [ngClass]="{'valid-data':f.submitted && !employeeApplicationForm.controls.Address.errors, 'invalid-data':f.submitted && employeeApplicationForm.controls.Address.errors}"/>
           </div>
         </div>
         <div class="position-item">
           <div class="item">
+            <p>Current Occupation<span class="required">*</span></p>
+            <input type="text" required placeholder="Occupation" required formControlName="CurrentOccupation" [ngClass]="{'valid-data':f.submitted && !employeeApplicationForm.controls.CurrentOccupation.errors, 'invalid-data':f.submitted && employeeApplicationForm.controls.CurrentOccupation.errors}"/>
+          </div>
+          <div class="item">
             <p>What position are you applying for?<span class="required">*</span></p>
-            <select required>
-                <option value="1">Select Appropiate Option</option>
-              <option value="2">Insurace Agent</option>
-              <option value="3">Insurance Manager</option>
-              <option value="4">Insurance Consultant</option>
-              <option value="5">Support</option>
+            <select required formControlName="JobRole" [ngClass]="{'valid-data':f.submitted && !employeeApplicationForm.controls.JobRole.errors, 'invalid-data':f.submitted && employeeApplicationForm.controls.JobRole.errors}" >
+                <option value="">Select Appropiate Option</option>
+              <option value="Insurace Agent">Insurace Agent</option>
+              <option value="Insurance Manager">Insurance Manager</option>
+              <option value="Insurance Consultant">Insurance Consultant</option>
+              <option value="Support">Support</option>
               
             </select>
           </div>
           <div class="item">
-            <p>Available start date<span class="required" >*</span></p> 
-            <input type="date" name="bdate"  required/><i class="fas fa-calendar-alt"></i>
+            <p>Available start date</p> 
+            <input type="date" name="bdate"/><i class="fas fa-calendar-alt"></i>
             
-
-          
           </div>
         </div>
         <div class="question">
-          <p>What is your current employment status?<span class="required">*</span></p>
+          <p>What is your current employment status?</p>
           <div class="question-answer">
             <div>
               <input type="radio" value="none" id="radio_1" name="status" required/>
@@ -254,14 +287,29 @@
             </div>
           </div>
         </div>
-        <div class="item">
-          <p>Submit your resume :</p>
-         
-  <input type="file" name="file" accept="file/*">
+        <div class="school-item">
+          <div class="item">
+            <p>Class X CGPA<span class="required">*</span></p>
+            <input type="text" placeholder="Class 10 CGPA" required formControlName="Cgpa_X" [ngClass]="{'valid-data':f.submitted && !employeeApplicationForm.controls.Cgpa_X.errors, 'invalid-data':f.submitted && employeeApplicationForm.controls.Cgpa_X.errors}"/>
+          </div>
+          <div class="item">
+            <p>Class XII CGPA<span class="required">*</span></p>
+            <input type="text" placeholder="Class 12 CGPA" required formControlName="Cgpa_XII" [ngClass]="{'valid-data':f.submitted && !employeeApplicationForm.controls.Cgpa_XII.errors, 'invalid-data':f.submitted && employeeApplicationForm.controls.Cgpa_XII.errors}"/>
+          </div>
+        </div>
+        <div class="college-item">
+          <div class="item">
+            <p>Graduation Course in College<span class="required">*</span></p>
+            <input type="text" placeholder="Course Name" required formControlName="CollegeCourse" [ngClass]="{'valid-data':f.submitted && !employeeApplicationForm.controls.CollegeCourse.errors, 'invalid-data':f.submitted && employeeApplicationForm.controls.CollegeCourse.errors}"/>
+          </div>
+          <div class="item">
+            <p>Overall CGPA of College<span class="required">*</span></p>
+            <input type="text" placeholder="College CGPA" required formControlName="Cgpa_College" [ngClass]="{'valid-data':f.submitted && !employeeApplicationForm.controls.Cgpa_College.errors, 'invalid-data':f.submitted && employeeApplicationForm.controls.Cgpa_College.errors}"/>
+          </div>
         </div>
        
         <div class="btn-block">
-          <button type="submit" href="/">Apply For The Job</button>
+          <button type="submit" (click)="apply()">Apply For The Job</button>
         </div>
       </form>
     </div>

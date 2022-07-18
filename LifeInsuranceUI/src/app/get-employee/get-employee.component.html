@@ -10,7 +10,7 @@
                 class="rounded-circle img-fluid" style="width: 150px;">
               <h5 class="my-3">{{employee.FirstName+" "+employee.LastName}}</h5>
               <div class="d-flex justify-content-center mb-2">
-                <button type="button" class="btn btn-lg btn-primary">
+                <button type="button" class="btn btn-lg btn-primary" [routerLink]="['../edit-employee']" [queryParams]="{id: employee.Id}" >
                   <i class="bi bi-pencil"></i>
                   Edit</button>
               </div>

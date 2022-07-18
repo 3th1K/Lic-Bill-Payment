@@ -1,13 +1,20 @@
 <body>
-<div class="container" >
+    <div class="jumbotron" *ngIf="!dataLoaded">
+        <div class="spinner-border m-5" role="status" >
+            <span class="sr-only" id="loading"></span>
+        </div>
+    </div>
+<div class="container" *ngIf="dataLoaded">
+    <h2 class="display-5"> Hi {{user.FirstName+" "+user.LastName}}, Your Due Amount is {{userDetails.Policy.Cost*userDetails.TenureOfPolicy}} /-</h2>
+    <br>
+    <h3>Please Pay to Continue</h3>
     <div class="row">
-        <div class="col-xs-12 col-md-6 col-md-offset-4">
+        <div class="col-md"></div>
+        <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="row">
                         <br>
-                        <h2> Hi UserName, Your Due Amount is .... </h2>
-                        <h3>Please Pay to Continue</h3>
                         <hr>
                         
                         <h3 class="text-center">Payment Details</h3>
@@ -61,6 +68,7 @@
                 </div>
             </div>
         </div>
+        <div class="col-md"></div>
     </div>
 </div>
 </body>

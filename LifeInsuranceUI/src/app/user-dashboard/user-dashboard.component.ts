@@ -63,9 +63,13 @@ export class UserDashboardComponent implements OnInit {
       this._router.navigate(['user-login']);
     }
   }
- 
+  
+  gettingUser:boolean = false;
+
   GetUser(){
-    this._sharedService.userGetUser(this.td['Id']).subscribe(data=>{      
+    this.gettingUser = true;
+    this._sharedService.userGetUser(this.td['Id']).subscribe(data=>{ 
+      this.gettingUser = false;     
       this.user = data;
       this.userUpdationForm.patchValue({
         Id: data.Id,
@@ -79,9 +83,12 @@ export class UserDashboardComponent implements OnInit {
     });
   }
 
+  gettingUserDetails:boolean = false;
   GetUserDetails(){
+    this.gettingUserDetails = true;
     this._sharedService.userGetUserDetails(this.td['Id']).subscribe({
-      next: (data:any) => {       
+      next: (data:any) => { 
+        this.gettingUserDetails = false;      
         this.userDetails = data;
         console.log(this.userDetails);
         this.userDetailsUpdationForm.patchValue({
@@ -102,6 +109,7 @@ export class UserDashboardComponent implements OnInit {
         });
       },
       error: (err:HttpErrorResponse) => {
+        this.gettingUserDetails = false;
         this.userDetailsUpdationForm.patchValue({
           UserId: this.td['Id']
         });
@@ -109,19 +117,26 @@ export class UserDashboardComponent implements OnInit {
     });
   }
 
+  updatingUserDetails:boolean = false;
   onUpdateUserDetails(){
     if(this.userDetailsUpdationForm.valid){
+      this.updatingUserDetails = true;
       console.log(this.userDetailsUpdationForm.value)
       this._sharedService.userUpdateUserDetails(this.userDetailsUpdationForm.value).subscribe((data)=>{
+        this.updatingUserDetails = false;
         alert("User Details Updated");
         this.GetUserDetails();
         //this._router.navigateByUrl('/home');
       });
     }
   }
+
+  updatingUser:boolean = false;
   onUpdateUser(){
     if(this.userUpdationForm.valid){
+      this.updatingUser = true;
       this._sharedService.userUpdateUser(this.userUpdationForm.value).subscribe((data)=>{
+        this.updatingUser = false;
         alert("User Details Updated");
         this.GetUser();
         //this._router.navigateByUrl('#list-viewprofile');

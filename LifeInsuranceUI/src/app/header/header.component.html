@@ -7,6 +7,8 @@
 
         <div class="navbar-collapse collapse" id="navbarsExample07" >
             <button *ngIf="this._authService.loggedIn() && this._sharedService.getTokenData()['Role']=='admin'" class="btn btn-sm btn-outline-success ml-5" [routerLink]="['admin-dashboard']">Admin Dashboard</button>
+            <button *ngIf="this._authService.loggedIn() && this._sharedService.getTokenData()['Role']=='user'" class="btn btn-sm btn-outline-success ml-5" [routerLink]="['user-dashboard']">User Dashboard</button>
+            <button *ngIf="this._authService.loggedIn() && this._sharedService.getTokenData()['Role']=='employee'" class="btn btn-sm btn-outline-success ml-5" [routerLink]="['employee-dashboard']">Employee Dashboard</button>
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
                     <a class="nav-link" [routerLink]="['home']">Home</a>
@@ -28,8 +30,8 @@
               Employee Corner
             </button>
             <div class="dropdown-menu" aria-labelledby="employee-corner">
-              <a class="dropdown-item" href="#">Employee Login</a>
-              <a class="dropdown-item" href="#"[routerLink]="['apply-employee']">Apply For Employee Role</a>
+              <a class="dropdown-item" [routerLink]="['employee-login']">Employee Login</a>
+              <a class="dropdown-item" [routerLink]="['apply-employee']">Apply For Employee Role</a>
             </div>
         </div>
         

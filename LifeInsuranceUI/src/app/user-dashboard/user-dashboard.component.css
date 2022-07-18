@@ -52,3 +52,6 @@
     .valid-data{
         border: 2px solid green;
     }
+    div .row{
+      margin-top: 10px;
+    }

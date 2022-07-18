@@ -178,6 +178,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -204,9 +205,14 @@
     <Compile Include="Migrations\202207161939053_smol update.designer.cs">
       <DependentUpon>202207161939053_smol update.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202207170643185_employeeApplication.cs" />
+    <Compile Include="Migrations\202207170643185_employeeApplication.designer.cs">
+      <DependentUpon>202207170643185_employeeApplication.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\EmployeeApplication.cs" />
     <Compile Include="Models\JwtHelper.cs" />
     <Compile Include="Models\LoginRequest.cs" />
     <Compile Include="Models\Policy.cs" />
@@ -280,6 +286,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202207161939053_smol update.resx">
       <DependentUpon>202207161939053_smol update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207170643185_employeeApplication.resx">
+      <DependentUpon>202207170643185_employeeApplication.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

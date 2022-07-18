@@ -1,0 +1,22 @@
+.card{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-align: center;
+    border: 2px solid greenyellow;
+    border-radius: 50px;
+}
+.lic-content{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    background-color:steelblue;
+    border: 2px solid greenyellow;
+    border-radius: 50px;
+}
+.invalid-data{
+    border: 2px solid red;
+}
+
+.valid-data{
+    border: 2px solid green;
+}

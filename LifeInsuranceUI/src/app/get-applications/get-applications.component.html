@@ -1,0 +1,47 @@
+<div>
+    <div class="jumbotron" *ngIf="!dataLoaded">
+        <div class="spinner-border m-5" role="status" *ngIf="!dataLoaded">
+            <span class="sr-only" id="loading"></span>
+        </div>
+    </div>
+    
+    <div class="jumbotron" *ngIf="dataLoaded && !applications.length">
+        <h1  class="display-4">No Applications</h1>
+    </div>
+    <div *ngIf="dataLoaded && applications.length">
+        <h1  class="display-1">Applications</h1>
+    </div>
+    <hr>
+    <table *ngIf="dataLoaded && applications.length" class="table table-hover table-borderless">
+        <thead>
+          <tr>
+            <th scope="col">Applied By</th>
+            <th scope="col">Email</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Role Applied For</th>
+            <th scope="col">Review Application</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let application of applications" >
+                <td>{{application.FirstName+" "+application.LastName}}</td>
+                <td>{{application.Email}}</td>
+                <td>{{application.Gender}}</td>
+                <td>{{application.JobRole}}</td>
+                <td> 
+                    <button class="btn btn-primary" [routerLink]="['../get-application']" [queryParams]="{id:application.Id}">
+                    <i class="bi bi-book"></i>
+                    Review
+                    </button>
+                </td>
+                <td>
+                    <button class="btn btn-danger" (click)="removeApplication(application.Id)">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

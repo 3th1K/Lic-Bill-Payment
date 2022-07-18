@@ -4,13 +4,19 @@
             <div class="card text-black">
                 <div class="card-body p-md-5">
                     <div class="row justify-content-center">
-                        <div class="col-md-9 col-lg-6 col-xl-5">
+                        <div *ngIf="!logginIn" class="col-md-9 col-lg-6 col-xl-5">
                             <img src="../../assets/images/user-login-page-img.webp" class="img-fluid">
-                          </div>
-                        <div class="col-md-10 col-xl-5" [formGroup]="userLoginForm" #f="ngForm">
+                        </div>
+                        <div class="jumbotron" *ngIf="logginIn">
+                            <div class="spinner-border m-5" role="status" >
+                                <span class="sr-only" id="loading"></span>
+                            </div>
+                            <h1 class="display-5">Logging In</h1>
+                        </div>
+                        <div *ngIf="!logginIn" class="col-md-10 col-xl-5" >
                             <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Login</p>
 
-                            <form class="mx-1 mx-md-4">
+                            <form class="mx-1 mx-md-4" [formGroup]="userLoginForm" #f="ngForm">
                                 <!-- Email input -->
                                 <div class="d-flex flex-row align-items-center mb-4">
                                     <input type="email" id="email" class="form-control form-control-lg" placeholder="Enter a valid email address" formControlName="EmailAddress" [ngClass]="{'invalid-data':f.submitted && userLoginForm.controls.EmailAddress.errors}"/>

@@ -28,11 +28,11 @@ export class AuthenticationService {
     return this.http.post(this.url+'/admin/login', data);
   }
 
-  adminDashboard(){
-    return this.http.get(this.url+'/admin/admin-dashboard');
-  }
-
   userLogin(data:any):Observable<any>{
     return this.http.post(this.url+'/user/login', data);
+  }
+
+  employeeLogin(data:any):Observable<any>{
+    return this.http.post(this.url+'/employee/login', data);
   }
 }

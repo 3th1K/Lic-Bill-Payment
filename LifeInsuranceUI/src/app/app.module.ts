@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -37,6 +38,9 @@ import { EmployeeDashboardComponent } from './employee-dashboard/employee-dashbo
 import { ApplyEmployeeComponent } from './apply-employee/apply-employee.component';
 import { PaymentPageComponent } from './payment-page/payment-page.component';
 import { FinalPageComponent } from './final-page/final-page.component';
+import { GetApplicationsComponent } from './get-applications/get-applications.component';
+import { GetApplicationComponent } from './get-application/get-application.component';
+import { EmployeeLoginComponent } from './employee-login/employee-login.component';
 
 export function tokenGetter(){
   return localStorage.getItem("token");
@@ -67,7 +71,10 @@ export function tokenGetter(){
     EmployeeDashboardComponent,
     ApplyEmployeeComponent,
     PaymentPageComponent,
-    FinalPageComponent
+    FinalPageComponent,
+    GetApplicationsComponent,
+    GetApplicationComponent,
+    EmployeeLoginComponent
 
   ],
   imports: [
@@ -76,6 +83,7 @@ export function tokenGetter(){
     RouterModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
     JwtModule.forRoot({
       config:{
         tokenGetter: tokenGetter,

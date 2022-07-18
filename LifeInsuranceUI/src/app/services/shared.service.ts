@@ -49,12 +49,28 @@ export class SharedService {
     return this._http.delete(this.url+'/admin/delete-user/'+id);
   }
 
+  adminAddPolicy(data:any):Observable<any>{
+    return this._http.post(this.url+'/admin/add-policy',data);
+  }
+
+  adminGetPolicy(id: number):Observable<any>{
+    return this._http.get(this.url+'/admin/get-policy/'+id);
+  }
+
   adminGetPolicies():Observable<any>{
     return this._http.get(this.url+'/admin/get-policies');
   }
 
-  createEmployee(data:any):Observable<any>{
-    return this._http.post(this.url+'/admin/create-employee',data);
+  adminDeletePolicy(id:number):Observable<any>{
+    return this._http.delete(this.url+'/admin/delete-policy/'+id);
+  }
+
+  adminUpdatePolicy(data:any):Observable<any>{
+    return this._http.put(this.url+'/admin/update-policy',data);
+  }
+
+  adminAddEmployee(data:any):Observable<any>{
+    return this._http.post(this.url+'/admin/add-employee',data);
   }
 
   adminGetEmployees():Observable<any>{
@@ -65,12 +81,34 @@ export class SharedService {
     return this._http.get(this.url+'/admin/get-employee/'+id);
   }
 
-  updateEmployee(id:number, data:any):Observable<any>{
-    return this._http.put(this.url+'/admin/update-employee/'+id, data);
+  adminUpdateEmployee(data:any):Observable<any>{
+    return this._http.put(this.url+'/admin/update-employee/',data);
   }
 
   adminDeleteEmployee(id:number):Observable<any>{
     return this._http.delete(this.url+'/admin/delete-employee/'+id);
+  }
+
+  adminGetApplications():Observable<any>{
+    return this._http.get(this.url+'/admin/get-applications');
+  }
+
+  adminGetApplication(id: number):Observable<any>{
+    return this._http.get(this.url+'/admin/get-application/'+id);
+  }
+
+  adminDeleteApplication(id:number):Observable<any>{
+    return this._http.delete(this.url+'/admin/delete-application/'+id);
+  }
+
+  //employee
+
+  employeeApply(data:any):Observable<any>{
+    return this._http.post(this.url+'/employee/apply',data);
+  }
+
+  employeeGetEmployee(id: any):Observable<any>{
+    return this._http.get(this.url+'/employee/get-employee/'+id);
   }
 
   //user

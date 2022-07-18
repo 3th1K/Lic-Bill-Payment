@@ -32,6 +32,13 @@ body{margin-top:20px;
         border-radius: 0.35rem;
         transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     }
+    .invalid-data{
+        border: 2px solid red;
+    }
+    
+    .valid-data{
+        border: 2px solid green;
+    }
     
     
     

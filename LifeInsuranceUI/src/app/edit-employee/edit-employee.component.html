@@ -1,28 +1,48 @@
 <div class="registration-form">
-    <form [formGroup]="employeeForm" #f="ngForm">
+    <form [formGroup]="employeeUpdationForm" #f="ngForm">
         <div class="form-icon">
             <span><i class="bi bi-person"></i></span>
         </div>
         <div class="form-group">
-            <div class="err-msg" *ngIf="f.submitted && employeeForm.controls.FirstName.errors">Please Enter a Valid Name :</div>
-            <input formControlName="FirstName" type="text" class="form-control item" id="name" placeholder="Name" [ngClass]="{'valid-data':f.submitted && !employeeForm.controls.FirstName.errors, 'invalid-data':f.submitted && employeeForm.controls.FirstName.errors}">
+            <div class="err-msg" *ngIf="f.submitted && employeeUpdationForm.controls.FirstName.errors">Please Enter a Valid Name :</div>
+            <input formControlName="FirstName" type="text" class="form-control item" id="name" placeholder="Name" [ngClass]="{'valid-data':f.submitted && !employeeUpdationForm.controls.FirstName.errors, 'invalid-data':f.submitted && employeeUpdationForm.controls.FirstName.errors}">
         </div>
         <div class="form-group">
-            <div class="err-msg" *ngIf="f.submitted && employeeForm.controls.LastName.errors">Please Enter a Valid Name :</div>
-            <input formControlName="LastName" type="text" class="form-control item" id="name" placeholder="Name" [ngClass]="{'valid-data':f.submitted && !employeeForm.controls.LastName.errors, 'invalid-data':f.submitted && employeeForm.controls.LastName.errors}">
+            <div class="err-msg" *ngIf="f.submitted && employeeUpdationForm.controls.LastName.errors">Please Enter a Valid Name :</div>
+            <input formControlName="LastName" type="text" class="form-control item" id="name" placeholder="Name" [ngClass]="{'valid-data':f.submitted && !employeeUpdationForm.controls.LastName.errors, 'invalid-data':f.submitted && employeeUpdationForm.controls.LastName.errors}">
         </div>
         <div class="form-group">
-            <div class="err-msg" *ngIf="f.submitted && employeeForm.controls.Email.errors">Please Enter a Valid Email :</div>
-            <input formControlName="Email" type="email" class="form-control item" id="email" placeholder="Email" [ngClass]="{'valid-data':f.submitted && !employeeForm.controls.Email.errors && employeeForm.controls.Email.value, 'invalid-data':f.submitted && employeeForm.controls.Email.errors}">
+            <div class="err-msg" *ngIf="f.submitted && employeeUpdationForm.controls.Email.errors">Please Enter a Valid Email :</div>
+            <input formControlName="Email" type="email" class="form-control item" id="email" placeholder="Email" [ngClass]="{'valid-data':f.submitted && !employeeUpdationForm.controls.Email.errors && employeeUpdationForm.controls.Email.value, 'invalid-data':f.submitted && employeeUpdationForm.controls.Email.errors}">
         </div>
-        <div class="form-group form-check form-switch">
-            <input formControlName="MartialStatus" type="checkbox" class="form-check-input item" id="MartialStatus">
-            <label for="MartialStatus" class="form-check-label">Martial Status</label>
+        <div class="form-group">
+            <div class="err-msg" *ngIf="f.submitted && employeeUpdationForm.controls.Gender.errors">Please Enter a Valid Gender :</div>
+            <input formControlName="Gender" type="text" class="form-control item" id="gender" placeholder="Gender" [ngClass]="{'valid-data':f.submitted && !employeeUpdationForm.controls.Gender.errors && employeeUpdationForm.controls.Gender.value, 'invalid-data':f.submitted && employeeUpdationForm.controls.Gender.errors}">
+        </div>
+        <div class="form-group">
+            <div class="err-msg" *ngIf="f.submitted && employeeUpdationForm.controls.PhoneNumber.errors">Please Enter a Valid Phone Number :</div>
+            <input formControlName="PhoneNumber" type="tel" class="form-control item" id="phone" placeholder="Phone Number" [ngClass]="{'valid-data':f.submitted && !employeeUpdationForm.controls.PhoneNumber.errors && employeeUpdationForm.controls.PhoneNumber.value, 'invalid-data':f.submitted && employeeUpdationForm.controls.PhoneNumber.errors}">
+        </div>
+        <div class="form-group">
+            <div class="err-msg" *ngIf="f.submitted && employeeUpdationForm.controls.DateOfBirth.errors">Please Enter a Valid Date Of Birth :</div>
+            <input formControlName="DateOfBirth" type="date" class="form-control item" id="dob" placeholder="Date Of Birth" [ngClass]="{'valid-data':f.submitted && !employeeUpdationForm.controls.DateOfBirth.errors && employeeUpdationForm.controls.DateOfBirth.value, 'invalid-data':f.submitted && employeeUpdationForm.controls.DateOfBirth.errors}">
+        </div>
+        <div class="form-group">
+            <div class="err-msg" *ngIf="f.submitted && employeeUpdationForm.controls.MartialStatus.errors">Please Enter a Valid MartialStatus :</div>
+            <input formControlName="MartialStatus" type="text" class="form-control item" id="ms" placeholder="Martail Status" [ngClass]="{'valid-data':f.submitted && !employeeUpdationForm.controls.MartialStatus.errors && employeeUpdationForm.controls.MartialStatus.value, 'invalid-data':f.submitted && employeeUpdationForm.controls.MartialStatus.errors}">
+        </div>
+        <div class="form-group">
+            <div class="err-msg" *ngIf="f.submitted && employeeUpdationForm.controls.AadharNumber.errors">Please Enter a Valid Aadhar Number :</div>
+            <input formControlName="AadharNumber" type="text" class="form-control item" id="aadhar" placeholder="Aadhar Number" [ngClass]="{'valid-data':f.submitted && !employeeUpdationForm.controls.AadharNumber.errors && employeeUpdationForm.controls.AadharNumber.value, 'invalid-data':f.submitted && employeeUpdationForm.controls.AadharNumber.errors}">
+        </div>
+        <div class="form-group">
+            <div class="err-msg" *ngIf="f.submitted && employeeUpdationForm.controls.Address.errors">Please Enter a Valid Address :</div>
+            <input formControlName="Address" type="text" class="form-control item" id="address" placeholder="Address" [ngClass]="{'valid-data':f.submitted && !employeeUpdationForm.controls.Address.errors && employeeUpdationForm.controls.Address.value, 'invalid-data':f.submitted && employeeUpdationForm.controls.Address.errors}">
         </div>
         <div class="form-group"></div>
         <div class="form-group">
-            <button type="submit" *ngIf="!id" class="btn btn-block btn-primary" (click)="createEmployee()">Create employee</button>
-            <button type="submit" *ngIf="id" class="btn btn-block btn-success" (click)="editemployee()">Save employee</button>
+            <button type="submit" class="btn btn-block btn-primary" (click)="onUpdateEmployee()">Update employee</button>
+            <button class="btn btn-block btn-lg btn-outline-warning" [routerLink]="['../get-employee']" [queryParams]="{id:employee.Id}" ><i class="bi bi-arrow-return-left"></i>Back To Employee Details</button>
         </div>
     </form>
 </div>

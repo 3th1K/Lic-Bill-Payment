@@ -21,21 +21,26 @@ export class UserLoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  logginIn:boolean=false;
   doLogin(){
-    this._authService.userLogin(this.userLoginForm.value).subscribe({
-      next : (res:any) => {
-        localStorage.setItem('token', res.token);
-        this._router.navigate(['user-dashboard']);
-        console.log(this._s.getTokenData());
-      },
-        error: (err:HttpErrorResponse) => {
-          console.log(err);
-          alert("Please Enter Valid Credentials");
-          this.userLoginForm.controls.Password.setValue('');
-          this._router.navigate(['user-login']);
-      }
-    });
+    if(this.userLoginForm.valid){
+      this.logginIn = true;
+      this._authService.userLogin(this.userLoginForm.value).subscribe({
+        next : (res:any) => {
+          this.logginIn = false;
+          localStorage.setItem('token', res.token);
+          this._router.navigate(['user-dashboard']);
+          console.log(this._s.getTokenData());
+        },
+          error: (err:HttpErrorResponse) => {
+            this.logginIn = false;
+            console.log(err);
+            alert("Please Enter Valid Credentials");
+            this.userLoginForm.controls.Password.setValue('');
+            this._router.navigate(['user-login']);
+        }
+      });
+    }
   }
 
 }

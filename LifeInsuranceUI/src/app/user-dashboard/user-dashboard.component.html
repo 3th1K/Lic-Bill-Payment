@@ -34,8 +34,14 @@
     <script src="./dashboard.js"></script>
     <link rel="stylesheet" >
 </head>
-
-<body style="background-image: url(https://cdn.hipwallpaper.com/i/71/40/eDtqgp.jpg);" class="img-fluid h-100" >
+<div class="jumbotron" *ngIf="gettingUser || gettingUserDetails" style="text-align:center">
+    <div class="spinner-border m-5" role="status" >
+        <span class="sr-only" id="loading"></span>
+    </div>
+    <h1 class="display-5" *ngIf="gettingUser">Getting Your Data ... </h1>
+    <h1 class="display-5" *ngIf="gettingUserDetails && !gettingUser">Getting More Data ... </h1>
+</div>
+<body *ngIf="!gettingUser && !gettingUserDetails" style="background-image: url(https://cdn.hipwallpaper.com/i/71/40/eDtqgp.jpg);" class="img-fluid h-100" >
    
     <!-- <div class="container-fluid pt-5"> -->
     <div class="pt-2 pb-5">
@@ -106,7 +112,7 @@
             </div>
             <div class="col-sm-9">
                 <div class="bg-light border rounded shadow">
-                    <div class="container">
+                    <div class="container" style="text-align: center;">
                         <p class="h3 p-3">Your Profile </p>
                     </div>
                     <div class="col-sm pb-4">
@@ -133,7 +139,12 @@
                                                     <div class="card-header font-weight-bold h4">
                                                         Personal Information
                                                     </div>
-                                                    <div class="card-body shadow-sm">
+                                                    <div class="jumbotron" *ngIf="updatingUser" style="text-align:center">
+                                                        <div class="spinner-border m-5" role="status" >
+                                                            <span class="sr-only" id="loading"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div *ngIf="!updatingUser" class="card-body shadow-sm">
                                                         <form [formGroup]="userUpdationForm" #f="ngForm">
                                                             <div class="form-row">
                                                                 <div class="col-sm mb-3">
@@ -152,9 +163,13 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-row">
-                                                                <div class="col-sm-4 mb-3">
+                                                                <div class="col-sm-4 mb-3"> 
                                                                     <label for="gender" class="font-weight-bold">Gender</label>
-                                                                    <input type="text" id="gender" class="form-control" formControlName="Gender"  [ngClass]="{'valid-data':f.submitted && !userUpdationForm.controls.Gender.errors, 'invalid-data':f.submitted && userUpdationForm.controls.Gender.errors}"/>
+                                                                    <select id="gender" class="form-control" formControlName="Gender" [ngClass]="{'valid-data':f.submitted && !userUpdationForm.controls.Gender.errors, 'invalid-data':f.submitted && userUpdationForm.controls.Gender.errors}">
+                                                                        <option value="Male">Male</option>
+                                                                        <option value="Female">Female</option>
+                                                                        <option value="Others">Others</option>
+                                                                    </select>
                                                                 </div>
                                                                
                                                                 <div class="col-sm-4 mb-3">
@@ -167,27 +182,6 @@
                                                                 <button class="btn btn-primary" type="submit" (click)="onUpdateUser()">Update Basic Details</button>
                                                             </div>
                                                         </form>
-
-                                                        <script>
-                                                            // Example starter JavaScript for disabling form submissions if there are invalid fields
-                                                            (function () {
-                                                                'use strict';
-                                                                window.addEventListener('load', function () {
-                                                                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                                                                    var forms = document.getElementsByClassName('needs-validation');
-                                                                    // Loop over them and prevent submission
-                                                                    var validation = Array.prototype.filter.call(forms, function (form) {
-                                                                        form.addEventListener('submit', function (event) {
-                                                                            if (form.checkValidity() === false) {
-                                                                                event.preventDefault();
-                                                                                event.stopPropagation();
-                                                                            }
-                                                                            form.classList.add('was-validated');
-                                                                        }, false);
-                                                                    });
-                                                                }, false);
-                                                            })();
-                                                        </script>
                                                     </div>
                                                 </div>
                                             </div>
@@ -202,7 +196,12 @@
                                                     <div class="card-header font-weight-bold h4">
                                                         Current Address
                                                     </div>
-                                                    <div class="card-body shadow-sm">
+                                                    <div class="jumbotron" *ngIf="updatingUserDetails" style="text-align:center">
+                                                        <div class="spinner-border m-5" role="status" >
+                                                            <span class="sr-only" id="loading"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div *ngIf="!updatingUserDetails" class="card-body shadow-sm">
                                                         <!-- <form class="was-validated"> -->
                                                         <form [formGroup]="userDetailsUpdationForm" #f="ngForm">
                                                              <div class="form-row col-sm">
@@ -212,7 +211,10 @@
                                                                 </div>
                                                                 <div class="col-sm mb-3">
                                                                     <label for="ms" class="font-weight-bold">Martial Status</label>
-                                                                    <input type="text" id="ms" class="form-control" formControlName="MartialStatus"  [ngClass]="{'valid-data':f.submitted && !userDetailsUpdationForm.controls.MartialStatus.errors, 'invalid-data':f.submitted && userDetailsUpdationForm.controls.MartialStatus.errors}"/>
+                                                                    <select type="text" id="ms" class="form-control" formControlName="MartialStatus"  [ngClass]="{'valid-data':f.submitted && !userDetailsUpdationForm.controls.MartialStatus.errors, 'invalid-data':f.submitted && userDetailsUpdationForm.controls.MartialStatus.errors}">
+                                                                        <option value="Married">Married</option>
+                                                                        <option value="Single">Single</option>
+                                                                    </select>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row col-sm">
@@ -304,9 +306,9 @@
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="list-viewprofile" role="tabpanel"
-                                aria-labelledby="list-viewprofile-list">
-                                <div class="card-columns">
-                                    <div class="card">
+                                aria-labelledby="list-viewprofile-list" style="text-align: center;">
+                                <div class="card-columns row">
+                                    <div class="card col-md">
                                         <div class="card-body">
                                             <h5 class="card-title">Personal Information 
                                             </h5>
@@ -371,7 +373,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="card" *ngIf="userDetails.Policy">
+                                    <div class="card col-md" *ngIf="userDetails.Policy">
                                         <div class="card-body">
                                             <h5 class="card-title">Policy Information 
                                             </h5>
@@ -434,7 +436,7 @@
                                         </div>
                                         <br>
                                     </div>
-                                    <div class="card" *ngIf="userDetails.UserId">
+                                    <div class="card col-md" *ngIf="userDetails.UserId">
                                     
                                         <div class="card-body">
                                             <h5 class="card-title">Other Information 
@@ -456,7 +458,7 @@
                                                     <p class="card-text"> {{userDetails.MartialStatus}}</p>
                                                 </div>
                                             </div>
-                                            <br>
+                                            
                                             <div class="row" *ngIf="userDetails.Occupation">
                                                 <div class="col-md-6">
                                                     <p class="card-text"> Occupation:</p>
@@ -465,7 +467,7 @@
                                                     <p class="card-text"> {{userDetails.Occupation}}</p>
                                                 </div>
                                             </div>
-                                            <br>
+                                            
                                             <div class="row" *ngIf="userDetails.Salary">
                                                 <div class="col-md-6">
                                                     <p class="card-text"> Salary :</p>
@@ -474,7 +476,7 @@
                                                     <p class="card-text"> {{userDetails.Salary}}</p>
                                                 </div>
                                             </div>
-                                            <br>
+                                            
                                             <div class="row" *ngIf="userDetails.AadharNumber">
                                                 <div class="col-md-7">
                                                     <p class="card-text"> Aadhar Number :</p>
@@ -483,7 +485,7 @@
                                                     <p class="card-text"> {{userDetails.AadharNumber}}</p>
                                                 </div>
                                             </div>
-                                            <br>
+                
                                             <div class="row" *ngIf="userDetails.PanNumber">
                                                 <div class="col-md-7">
                                                     <p class="card-text"> PAN Number :</p>

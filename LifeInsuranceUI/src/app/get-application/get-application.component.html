@@ -1,0 +1,181 @@
+<section>
+    <div class="container py-5">
+       
+      <div class="row">
+        <div class="col-lg ">
+
+          <div class="card mb-4 cprofile">
+            <div class="card-body text-center">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+                    class="rounded-circle img-fluid" style="width: 150px;">
+                <div class="row" *ngIf="!isAccepted">
+                    <div class="col-md">
+                        <button class="btn btn-outline-success" (click)="isAccepted=true"><span class="bi bi-check"></span> Accept Application</button>
+                    </div>
+                    <div class="col-md">
+                        <button class="btn btn-outline-danger" (click)="rejectApplication()"><span class="bi bi-x"></span> Reject Application</button>
+                    </div>
+                </div>
+                <div [formGroup]="passwordForm" #f="ngForm" class="card my-4" *ngIf="isAccepted" style="width: 50%; margin-left: 25%;">
+                    <div class="form-group my-4" style="font-weight: 600;width: 80%; margin-left: 10%;">
+                        <label for="password">Enter Default Password For This New Employee</label>
+                        <input id="password" class="form-control" type="text" placeholder="Password" formControlName="password" [ngClass]="{'valid-data':passwordForm.valid, 'invalid-data':!passwordForm.valid}">
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-md">
+                            <button id="f" class="btn btn-outline-success" type="submit" (click)="acceptApplication()"><span class="bi bi-check"></span> Confirm</button>
+                        </div>
+                        <div class="col-md">
+                            <button class="btn btn-outline-danger" (click)="isAccepted=false"><span class="bi bi-x"></span> Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+          <div class="col-lg">
+            <div class="card text-center cbody">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-sm">
+                    <p class="mb-0">First Name</p>
+                  </div>
+                  <div class="col-sm">
+                    <p class="text-muted mb-0">{{application.FirstName}}</p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm">
+                      <p class="mb-0">Last Name</p>
+                    </div>
+                    <div class="col-sm">
+                      <p class="text-muted mb-0">{{application.LastName}}</p>
+                    </div>
+                  </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm">
+                    <p class="mb-0">Email Address</p>
+                  </div>
+                  <div class="col-sm">
+                    <p class="text-muted mb-0">{{application.Email}}</p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm">
+                    <p class="mb-0">Phone Number</p>
+                  </div>
+                  <div class="col-sm">
+                    <p class="text-muted mb-0">{{application.PhoneNumber}}</p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm">
+                    <p class="mb-0">Gender</p>
+                  </div>
+                  <div class="col-sm">
+                    <p class="text-muted mb-0">{{application.Gender}}</p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm">
+                    <p class="mb-0">Date Of Birth</p>
+                  </div>
+                  <div class="col-sm">
+                    <p class="text-muted mb-0">{{application.DateOfBirth}}</p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm">
+                    <p class="mb-0">Martial Status</p>
+                  </div>
+                  <div class="col-sm">
+                    <p class="text-muted mb-0">{{application.MartialStatus}}</p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm">
+                    <p class="mb-0">Aadhar Number</p>
+                  </div>
+                  <div class="col-sm">
+                    <p class="text-muted mb-0">{{application.AadharNumber}}</p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm">
+                    <p class="mb-0">Address</p>
+                  </div>
+                  <div class="col-sm">
+                    <p class="text-muted mb-0">{{application.Address}}</p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm">
+                      <p class="mb-0">Current Occupation</p>
+                    </div>
+                    <div class="col-sm">
+                      <p class="text-muted mb-0">{{application.CurrentOccupation}}</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm">
+                      <p class="mb-0">Job Role Applied For</p>
+                    </div>
+                    <div class="col-sm">
+                      <p class="text-muted mb-0">{{application.JobRole}}</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm">
+                      <p class="mb-0">Class X CGPA</p>
+                    </div>
+                    <div class="col-sm">
+                      <p class="text-muted mb-0">{{application.Cgpa_X}}</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm">
+                      <p class="mb-0">Class XII CGPA</p>
+                    </div>
+                    <div class="col-sm">
+                      <p class="text-muted mb-0">{{application.Cgpa_XII}}</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm">
+                      <p class="mb-0">College Graduation Course</p>
+                    </div>
+                    <div class="col-sm">
+                      <p class="text-muted mb-0">{{application.CollegeCourse}}</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm">
+                      <p class="mb-0">College CGPA</p>
+                    </div>
+                    <div class="col-sm">
+                      <p class="text-muted mb-0">{{application.Cgpa_College}}</p>
+                    </div>
+                </div>
+                  
+              </div>
+            </div>
+          </div>
+        
+        </div>
+      </div>
+    </div>
+</section>
